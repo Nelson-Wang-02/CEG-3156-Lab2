@@ -1,0 +1,22 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+entity controlLogicUnit is 
+	port (
+		op : in std_logic_vector(5 downto 0);
+		RegDst, ALUSrc, 
+		MemtoReg, RegWrite : IN STD_LOGIC;
+		MemRead, MemWrite : IN STD_LOGIC;
+		Branch : IN STD_LOGIC;
+		ALUOp1, ALUOp2 : IN STD_LOGIC
+		
+		);
+
+end controlLogicUnit; 
+	
+architecture rtl of controlLogicUnit is 
+
+		signal rFormat, lw, sw, beq : STD_LOGIC;
+		
+		begin
+	
