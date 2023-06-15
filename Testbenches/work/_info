@@ -1,0 +1,75 @@
+m255
+K3
+13
+cModel Technology
+dC:\altera\13.0sp1
+Econtrollogicunit
+Z0 w1686257389
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z3 dC:\1-School\CEG-3156-Lab2\Testbenches
+Z4 8C:/1-School/CEG-3156-Lab2/Testbenches/controlLogicUnit.vhd
+Z5 FC:/1-School/CEG-3156-Lab2/Testbenches/controlLogicUnit.vhd
+l0
+L4
+VhR7S:dkUagnonM<?]^4O63
+!s100 l@a]Y3_cZNcg4J[e=W2Ce2
+Z6 OV;C;10.1d;51
+32
+!i10b 1
+Z7 !s108 1686863865.653000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/1-School/CEG-3156-Lab2/Testbenches/controlLogicUnit.vhd|
+Z9 !s107 C:/1-School/CEG-3156-Lab2/Testbenches/controlLogicUnit.vhd|
+Z10 o-work work -2002 -explicit -O0
+Z11 tExplicit 1
+Artl
+R1
+R2
+Z12 DEx4 work 16 controllogicunit 0 22 hR7S:dkUagnonM<?]^4O63
+l22
+L16
+Z13 V1IUM6=8zPMHWcL2<K235T0
+Z14 !s100 zJQ2^=FmO9ZTHFmZH3LhX3
+R6
+32
+!i10b 1
+R7
+R8
+R9
+R10
+R11
+Etb_controllogicunit
+Z15 w1686863733
+R1
+R2
+R3
+Z16 8C:/1-School/CEG-3156-Lab2/Testbenches/tb_controlLogicUnit.vhd
+Z17 FC:/1-School/CEG-3156-Lab2/Testbenches/tb_controlLogicUnit.vhd
+l0
+L4
+V]>9bMKF72hAl=Vc8MWKaD0
+R6
+32
+Z18 !s108 1686863865.590000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/1-School/CEG-3156-Lab2/Testbenches/tb_controlLogicUnit.vhd|
+Z20 !s107 C:/1-School/CEG-3156-Lab2/Testbenches/tb_controlLogicUnit.vhd|
+R10
+R11
+!s100 HAnLDj>CBUV^iH3fX@RdE1
+!i10b 1
+Atestbench
+R1
+R2
+DEx4 work 19 tb_controllogicunit 0 22 ]>9bMKF72hAl=Vc8MWKaD0
+l33
+L7
+Vl^<UHUKBTXfD5>Ec^;m911
+R6
+32
+R18
+R19
+R20
+R10
+R11
+!s100 Ln2C>hdKfcbcV?Rc]MUJ71
+!i10b 1

@@ -1,0 +1,48 @@
+# Compile of tb_controlLogicUnit.vhd was successful.
+# Compile of controlLogicUnit.vhd was successful.
+# 2 compiles, 0 failed with no errors. 
+# Load canceled
+vmap -del work
+# Removing reference to logical library work
+# Modifying C:/1-School/CEG-3156-Lab2/Testbenches/lab3.mpf
+vmap work C:/1-School/CEG-3156-Lab2/Testbenches/work
+# Modifying C:/1-School/CEG-3156-Lab2/Testbenches/lab3.mpf
+vsim work.tb_controllogicunit
+# vsim work.tb_controllogicunit 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_controllogicunit(testbench)
+# Loading work.controllogicunit(rtl)
+add wave -position end  sim:/tb_controllogicunit/tb_op
+add wave -position end  sim:/tb_controllogicunit/tb_RegDst
+add wave -position end  sim:/tb_controllogicunit/tb_ALUSrc
+add wave -position end  sim:/tb_controllogicunit/tb_MemtoReg
+add wave -position end  sim:/tb_controllogicunit/tb_RegWrite
+add wave -position end  sim:/tb_controllogicunit/tb_MemRead
+add wave -position end  sim:/tb_controllogicunit/tb_MemWrite
+add wave -position end  sim:/tb_controllogicunit/tb_Branch
+add wave -position end  sim:/tb_controllogicunit/tb_ALUOp1
+add wave -position end  sim:/tb_controllogicunit/tb_ALUOp0
+run -all
+# Compile of tb_controlLogicUnit.vhd was successful.
+# Compile of controlLogicUnit.vhd was successful.
+# 2 compiles, 0 failed with no errors. 
+vsim work.tb_controllogicunit
+# vsim work.tb_controllogicunit 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_controllogicunit(testbench)
+# Loading work.controllogicunit(rtl)
+add wave -position end  sim:/tb_controllogicunit/tb_op
+add wave -position end  sim:/tb_controllogicunit/tb_RegDst
+add wave -position end  sim:/tb_controllogicunit/tb_ALUSrc
+add wave -position end  sim:/tb_controllogicunit/tb_MemtoReg
+add wave -position end  sim:/tb_controllogicunit/tb_RegWrite
+add wave -position end  sim:/tb_controllogicunit/tb_MemRead
+add wave -position end  sim:/tb_controllogicunit/tb_MemWrite
+add wave -position end  sim:/tb_controllogicunit/tb_Branch
+add wave -position end  sim:/tb_controllogicunit/tb_ALUOp1
+add wave -position end  sim:/tb_controllogicunit/tb_ALUOp0
+run -all
