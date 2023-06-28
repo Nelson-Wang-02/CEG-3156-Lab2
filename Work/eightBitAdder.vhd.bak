@@ -1,0 +1,31 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+entity eightBitAdder is 
+	port (
+		A, B : IN STD_LOGIC_VECTOR(7 downto 0);
+		sum : OUT STD_LOGIC_VECTOR(7 downto 0);
+	);
+	
+end eightBitAdder;
+
+architecture rtl is 
+
+	component oneBitAdder is
+		PORT(
+			i_CarryIn		: IN	STD_LOGIC;
+			i_Ai, i_Bi		: IN	STD_LOGIC;
+			o_Sum, o_CarryOut	: OUT	STD_LOGIC);
+	end component;
+
+
+
+	begin 
+
+
+
+
+
+
+
+end rtl; 
