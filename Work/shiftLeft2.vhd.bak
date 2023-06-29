@@ -1,0 +1,8 @@
+entity shiftLeft2 is 
+	
+	port (
+		
+	
+	);
+
+end shiftLeft2;

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2
-Tue Jun 27 21:37:30 2023
+Thu Jun 29 11:18:01 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,11 +13,14 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "eightBitAdder:b0to7"
- 10. Port Connectivity Checks: "eightBitAdder:b24to31"
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. General Register Statistics
+ 11. Source assignments for altsyncram:altsyncram_component|altsyncram_o7i1:auto_generated
+ 12. Parameter Settings for User Entity Instance: altsyncram:altsyncram_component
+ 13. altsyncram Parameter Settings by Entity Instance
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -43,18 +46,18 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jun 27 21:37:30 2023           ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 29 11:18:01 2023           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; lab2                                            ;
-; Top-level Entity Name              ; thirtyTwoBitAdder                               ;
+; Top-level Entity Name              ; dataMem                                         ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 76                                              ;
-;     Total combinational functions  ; 76                                              ;
+; Total logic elements               ; 0                                               ;
+;     Total combinational functions  ; 0                                               ;
 ;     Dedicated logic registers      ; 0                                               ;
 ; Total registers                    ; 0                                               ;
-; Total pins                         ; 96                                              ;
+; Total pins                         ; 26                                              ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 0                                               ;
+; Total memory bits                  ; 2,048                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
 ; Total PLLs                         ; 0                                               ;
 +------------------------------------+-------------------------------------------------+
@@ -66,7 +69,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                                      ; thirtyTwoBitAdder  ; lab2               ;
+; Top-level entity name                                                      ; dataMem            ; lab2               ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -153,20 +156,29 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 6      ;
+; Number detected on machine ; 8      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                 ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                          ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
-; Imports/onebitadder.vhd          ; yes             ; User VHDL File  ; D:/Quartus_Projects/CEG-3156/CEG-3156-Lab2/Imports/onebitadder.vhd    ;         ;
-; Work/eightBitAdder.vhd           ; yes             ; User VHDL File  ; D:/Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBitAdder.vhd     ;         ;
-; Work/thirtyTwoBitAdder.vhd       ; yes             ; User VHDL File  ; D:/Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/thirtyTwoBitAdder.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
+; Work/dataMem.vhd                 ; yes             ; User Wizard-Generated File             ; C:/1-School/CEG-3156-Lab2/Work/dataMem.vhd                              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_o7i1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/1-School/CEG-3156-Lab2/db/altsyncram_o7i1.tdf                        ;         ;
+; ../MIFs/memTest.mif              ; yes             ; Auto-Found Memory Initialization File  ; C:/1-School/CEG-3156-Lab2/MIFs/memTest.mif                              ;         ;
++----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
 
 
 +----------------------------------------------------------+
@@ -174,75 +186,59 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+------------+
 ; Resource                                    ; Usage      ;
 +---------------------------------------------+------------+
-; Estimated Total logic elements              ; 76         ;
 ;                                             ;            ;
-; Total combinational functions               ; 76         ;
+; Total combinational functions               ; 0          ;
 ; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 31         ;
-;     -- 3 input functions                    ; 29         ;
-;     -- <=2 input functions                  ; 16         ;
+;     -- 4 input functions                    ; 0          ;
+;     -- 3 input functions                    ; 0          ;
+;     -- <=2 input functions                  ; 0          ;
 ;                                             ;            ;
 ; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 76         ;
+;     -- normal mode                          ; 0          ;
 ;     -- arithmetic mode                      ; 0          ;
 ;                                             ;            ;
 ; Total registers                             ; 0          ;
 ;     -- Dedicated logic registers            ; 0          ;
 ;     -- I/O registers                        ; 0          ;
 ;                                             ;            ;
-; I/O pins                                    ; 96         ;
+; I/O pins                                    ; 26         ;
+; Total memory bits                           ; 2048       ;
 ; Embedded Multiplier 9-bit elements          ; 0          ;
-; Maximum fan-out node                        ; A[0]~input ;
-; Maximum fan-out                             ; 3          ;
-; Total fan-out                               ; 371        ;
-; Average fan-out                             ; 1.38       ;
+; Maximum fan-out node                        ; wren~input ;
+; Maximum fan-out                             ; 8          ;
+; Total fan-out                               ; 122        ;
+; Average fan-out                             ; 2.03       ;
 +---------------------------------------------+------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                               ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                       ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+--------------+
-; |thirtyTwoBitAdder         ; 76 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 96   ; 0            ; |thirtyTwoBitAdder                                        ; work         ;
-;    |eightBitAdder:b0to7|   ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7                    ; work         ;
-;       |oneBitAdder:add0|   ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add0   ; work         ;
-;       |oneBitAdder:add1|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add1   ; work         ;
-;       |oneBitAdder:add2|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add2   ; work         ;
-;       |oneBitAdder:add3|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add3   ; work         ;
-;       |oneBitAdder:add4|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add4   ; work         ;
-;       |oneBitAdder:add5|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add5   ; work         ;
-;       |oneBitAdder:add6|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add6   ; work         ;
-;       |oneBitAdder:add7|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b0to7|oneBitAdder:add7   ; work         ;
-;    |eightBitAdder:b16to23| ; 20 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23                  ; work         ;
-;       |oneBitAdder:add0|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add0 ; work         ;
-;       |oneBitAdder:add1|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add1 ; work         ;
-;       |oneBitAdder:add2|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add2 ; work         ;
-;       |oneBitAdder:add3|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add3 ; work         ;
-;       |oneBitAdder:add4|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add4 ; work         ;
-;       |oneBitAdder:add5|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add5 ; work         ;
-;       |oneBitAdder:add6|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add6 ; work         ;
-;       |oneBitAdder:add7|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b16to23|oneBitAdder:add7 ; work         ;
-;    |eightBitAdder:b24to31| ; 18 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31                  ; work         ;
-;       |oneBitAdder:add0|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add0 ; work         ;
-;       |oneBitAdder:add1|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add1 ; work         ;
-;       |oneBitAdder:add2|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add2 ; work         ;
-;       |oneBitAdder:add3|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add3 ; work         ;
-;       |oneBitAdder:add4|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add4 ; work         ;
-;       |oneBitAdder:add5|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add5 ; work         ;
-;       |oneBitAdder:add6|   ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add6 ; work         ;
-;       |oneBitAdder:add7|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b24to31|oneBitAdder:add7 ; work         ;
-;    |eightBitAdder:b8to15|  ; 20 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15                   ; work         ;
-;       |oneBitAdder:add0|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add0  ; work         ;
-;       |oneBitAdder:add1|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add1  ; work         ;
-;       |oneBitAdder:add2|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add2  ; work         ;
-;       |oneBitAdder:add3|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add3  ; work         ;
-;       |oneBitAdder:add4|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add4  ; work         ;
-;       |oneBitAdder:add5|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add5  ; work         ;
-;       |oneBitAdder:add6|   ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add6  ; work         ;
-;       |oneBitAdder:add7|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |thirtyTwoBitAdder|eightBitAdder:b8to15|oneBitAdder:add7  ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                         ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                     ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+--------------+
+; |dataMem                               ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 26   ; 0            ; |dataMem                                                                ; work         ;
+;    |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |dataMem|altsyncram:altsyncram_component                                ; work         ;
+;       |altsyncram_o7i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |dataMem|altsyncram:altsyncram_component|altsyncram_o7i1:auto_generated ; work         ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                        ;
++---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------+
+; Name                                                                      ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                 ;
++---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------+
+; altsyncram:altsyncram_component|altsyncram_o7i1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 8            ; --           ; --           ; 2048 ; ../MIFs/memTest.mif ;
++---------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                        ;
++--------+--------------+---------+--------------+--------------+-----------------+--------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance ; IP Include File                            ;
++--------+--------------+---------+--------------+--------------+-----------------+--------------------------------------------+
+; Altera ; RAM: 1-PORT  ; 13.0    ; N/A          ; N/A          ; |dataMem        ; C:/1-School/CEG-3156-Lab2/Work/dataMem.vhd ;
++--------+--------------+---------+--------------+--------------+-----------------+--------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -260,22 +256,94 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------+
-; Port Connectivity Checks: "eightBitAdder:b0to7" ;
-+-------+-------+----------+----------------------+
-; Port  ; Type  ; Severity ; Details              ;
-+-------+-------+----------+----------------------+
-; i_cin ; Input ; Info     ; Stuck at GND         ;
-+-------+-------+----------+----------------------+
++---------------------------------------------------------------------------------------+
+; Source assignments for altsyncram:altsyncram_component|altsyncram_o7i1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------+
+; Assignment                      ; Value              ; From ; To                      ;
++---------------------------------+--------------------+------+-------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                       ;
++---------------------------------+--------------------+------+-------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "eightBitAdder:b24to31"                                                                    ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; o_carryout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: altsyncram:altsyncram_component ;
++------------------------------------+----------------------+------------------+
+; Parameter Name                     ; Value                ; Type             ;
++------------------------------------+----------------------+------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped          ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY       ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY     ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE     ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE   ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped          ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped          ;
+; WIDTH_A                            ; 8                    ; Signed Integer   ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer   ;
+; NUMWORDS_A                         ; 256                  ; Signed Integer   ;
+; OUTDATA_REG_A                      ; CLOCK0               ; Untyped          ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped          ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped          ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped          ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped          ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped          ;
+; WIDTH_B                            ; 1                    ; Untyped          ;
+; WIDTHAD_B                          ; 1                    ; Untyped          ;
+; NUMWORDS_B                         ; 1                    ; Untyped          ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped          ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped          ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped          ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped          ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped          ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped          ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped          ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped          ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped          ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped          ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped          ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped          ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer   ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped          ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped          ;
+; BYTE_SIZE                          ; 8                    ; Untyped          ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped          ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped          ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped          ;
+; INIT_FILE                          ; ../MIFs/memTest.mif  ; Untyped          ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped          ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped          ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped          ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped          ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped          ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped          ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped          ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped          ;
+; ENABLE_ECC                         ; FALSE                ; Untyped          ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped          ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped          ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped          ;
+; CBXI_PARAMETER                     ; altsyncram_o7i1      ; Untyped          ;
++------------------------------------+----------------------+------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                            ;
++-------------------------------------------+---------------------------------+
+; Name                                      ; Value                           ;
++-------------------------------------------+---------------------------------+
+; Number of entity instances                ; 1                               ;
+; Entity Instance                           ; altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                     ;
+;     -- WIDTH_A                            ; 8                               ;
+;     -- NUMWORDS_A                         ; 256                             ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                          ;
+;     -- WIDTH_B                            ; 1                               ;
+;     -- NUMWORDS_B                         ; 1                               ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                          ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                    ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                            ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                       ;
++-------------------------------------------+---------------------------------+
 
 
 +-------------------------------+
@@ -293,9 +361,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Jun 27 21:37:28 2023
+    Info: Processing started: Thu Jun 29 11:17:59 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2 -c lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file work/instrmem.vhd
+    Info (12022): Found design unit 1: instrmem-SYN
+    Info (12023): Found entity 1: instrMem
+Info (12021): Found 2 design units, including 1 entities, in source file work/three_to_eight_decoder.vhd
+    Info (12022): Found design unit 1: three_to_eight_decoder-rtl
+    Info (12023): Found entity 1: three_to_eight_decoder
+Info (12021): Found 2 design units, including 1 entities, in source file work/registerfile.vhd
+    Info (12022): Found design unit 1: registerFile-rtl
+    Info (12023): Found entity 1: registerFile
+Info (12021): Found 2 design units, including 1 entities, in source file work/onebit8to1mux.vhd
+    Info (12022): Found design unit 1: oneBit8to1Mux-rtl
+    Info (12023): Found entity 1: oneBit8to1Mux
+Info (12021): Found 2 design units, including 1 entities, in source file work/onebit5to1mux.vhd
+    Info (12022): Found design unit 1: oneBit5to1Mux-rtl
+    Info (12023): Found entity 1: oneBit5to1Mux
+Info (12021): Found 2 design units, including 1 entities, in source file work/eightbitregister.vhd
+    Info (12022): Found design unit 1: eightBitRegister-rtl
+    Info (12023): Found entity 1: eightBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file work/eightbitcomparator.vhd
+    Info (12022): Found design unit 1: eightBitComparator-rtl
+    Info (12023): Found entity 1: eightBitComparator
+Info (12021): Found 2 design units, including 1 entities, in source file work/eightbitaddsub.vhd
+    Info (12022): Found design unit 1: eightBitAddSub-rtl
+    Info (12023): Found entity 1: eightBitAddSub
+Info (12021): Found 2 design units, including 1 entities, in source file work/eightbit8to1mux.vhd
+    Info (12022): Found design unit 1: eightBit8to1Mux-rtl
+    Info (12023): Found entity 1: eightBit8to1Mux
+Info (12021): Found 2 design units, including 1 entities, in source file work/eightbit5to1mux.vhd
+    Info (12022): Found design unit 1: eightBit5to1Mux-rtl
+    Info (12023): Found entity 1: eightBit5to1Mux
+Info (12021): Found 2 design units, including 1 entities, in source file work/aluctrlunit.vhd
+    Info (12022): Found design unit 1: ALUCtrlUnit-struct
+    Info (12023): Found entity 1: ALUCtrlUnit
+Info (12021): Found 2 design units, including 1 entities, in source file work/alucontrolunit.vhd
+    Info (12022): Found design unit 1: ALUControlUnit-rtl
+    Info (12023): Found entity 1: ALUControlUnit
+Info (12021): Found 2 design units, including 1 entities, in source file work/alu.vhd
+    Info (12022): Found design unit 1: alu-rtl
+    Info (12023): Found entity 1: alu
 Info (12021): Found 2 design units, including 1 entities, in source file testbenches/tb_controllogicunit.vhd
     Info (12022): Found design unit 1: tb_controlLogicUnit-testbench
     Info (12023): Found entity 1: tb_controlLogicUnit
@@ -353,19 +460,48 @@ Info (12021): Found 2 design units, including 1 entities, in source file work/ei
 Info (12021): Found 2 design units, including 1 entities, in source file work/thirtytwobitadder.vhd
     Info (12022): Found design unit 1: thirtyTwoBitAdder-rtl
     Info (12023): Found entity 1: thirtyTwoBitAdder
-Info (12127): Elaborating entity "thirtyTwoBitAdder" for the top level hierarchy
-Info (12128): Elaborating entity "eightBitAdder" for hierarchy "eightBitAdder:b24to31"
-Info (12128): Elaborating entity "oneBitAdder" for hierarchy "eightBitAdder:b24to31|oneBitAdder:add7"
-Info (286030): Timing-Driven Synthesis is running
+Info (12021): Found 2 design units, including 1 entities, in source file work/datamem.vhd
+    Info (12022): Found design unit 1: datamem-SYN
+    Info (12023): Found entity 1: dataMem
+Info (12127): Elaborating entity "dataMem" for the top level hierarchy
+Info (12128): Elaborating entity "altsyncram" for hierarchy "altsyncram:altsyncram_component"
+Info (12130): Elaborated megafunction instantiation "altsyncram:altsyncram_component"
+Info (12133): Instantiated megafunction "altsyncram:altsyncram_component" with the following parameter:
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "../MIFs/memTest.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "CLOCK0"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_o7i1.tdf
+    Info (12023): Found entity 1: altsyncram_o7i1
+Info (12128): Elaborating entity "altsyncram_o7i1" for hierarchy "altsyncram:altsyncram_component|altsyncram_o7i1:auto_generated"
+Warning (113018): Width of data items in "memTest.mif" is greater than the memory width. Truncating data items to fit in memory.
+Warning (113031): 6 out of 256 addresses are reinitialized. The latest initialized data will replace the existing data. There are 6 warnings found, and 6 warnings are reported.
+    Warning (113030): Memory Initialization File address 0 is reinitialized
+    Warning (113030): Memory Initialization File address 4 is reinitialized
+    Warning (113030): Memory Initialization File address 8 is reinitialized
+    Warning (113030): Memory Initialization File address 12 is reinitialized
+    Warning (113030): Memory Initialization File address 16 is reinitialized
+    Warning (113030): Memory Initialization File address 20 is reinitialized
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 172 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 64 input pins
-    Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 76 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4642 megabytes
-    Info: Processing ended: Tue Jun 27 21:37:30 2023
+Info (21057): Implemented 34 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4647 megabytes
+    Info: Processing ended: Thu Jun 29 11:18:01 2023
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
