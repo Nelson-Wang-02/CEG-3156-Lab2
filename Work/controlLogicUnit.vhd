@@ -9,6 +9,7 @@ entity controlLogicUnit is
 		MemtoReg, RegWrite : OUT STD_LOGIC;
 		MemRead, MemWrite : OUT STD_LOGIC;
 		Branch : OUT STD_LOGIC;
+		BranchNotEqual : OUT STD_LOGIC;
 		Jump : OUT STD_LOGIC;
 		ALUOp1, ALUOp0 : OUT STD_LOGIC);
 
@@ -33,7 +34,7 @@ architecture rtl of controlLogicUnit is
 	
 	o_ALUSrc <= lw or sw; 
 	o_RegWrite <= rFormat or lw;
-	o_Branch <= beq or bne; 
+	o_Branch <= beq;
 	
 	--output drivers
 	RegDst <= rFormat;
@@ -43,6 +44,7 @@ architecture rtl of controlLogicUnit is
 	MemRead <= lw; 
 	MemWrite <= sw; 
 	Branch <= o_Branch; 
+	BranchNotEqual <= bne;
 	Jump <= j;
 	ALUOp1 <= rFormat; 
 	ALUOp0 <= beq; 
