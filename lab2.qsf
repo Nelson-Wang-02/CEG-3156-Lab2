@@ -54,6 +54,7 @@ set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulati
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE Work/singleCycleProcessor.vhd
 set_global_assignment -name VHDL_FILE Work/dataMem.vhd
 set_global_assignment -name VHDL_FILE Work/instrMem.vhd
 set_global_assignment -name VHDL_FILE Work/three_to_eight_decoder.vhd
@@ -90,5 +91,11 @@ set_global_assignment -name VHDL_FILE Work/thirtyTwoBitAdder.vhd
 set_global_assignment -name VHDL_FILE Work/oneBit2to1Mux.vhd
 set_global_assignment -name VHDL_FILE Work/eightBit2to1Mux.vhd
 set_global_assignment -name VHDL_FILE Work/shiftLeft2.vhd
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name BDF_FILE Block/singleCycleProcessor.bdf
+set_global_assignment -name QIP_FILE lpm/constant_add.qip
+set_global_assignment -name QIP_FILE lpm/lpm_const_add.qip
+set_global_assignment -name QIP_FILE lpm/lpm_const_4.qip
+set_global_assignment -name QIP_FILE lpm/lpm_const_1.qip
+set_global_assignment -name VHDL_FILE Work/threeBit2to1Mux.vhd
+set_global_assignment -name VHDL_FILE Work/shiftLeft2_eightBits.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
