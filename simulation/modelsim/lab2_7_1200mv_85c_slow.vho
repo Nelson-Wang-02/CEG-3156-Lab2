@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
--- DATE "06/29/2023 11:18:23"
+-- DATE "07/02/2023 23:03:19"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -31,46 +31,73 @@ LIBRARY IEEE;
 USE CYCLONEIVE.CYCLONEIVE_COMPONENTS.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY 	dataMem IS
+ENTITY 	singleCycleProcessor IS
     PORT (
-	address : IN std_logic_vector(7 DOWNTO 0);
-	clock : IN std_logic;
-	data : IN std_logic_vector(7 DOWNTO 0);
-	wren : IN std_logic;
-	q : OUT std_logic_vector(7 DOWNTO 0)
+	GClock : IN std_logic;
+	GReset : IN std_logic;
+	ValueSelect : IN std_logic_vector(2 DOWNTO 0);
+	MuxOut : OUT std_logic_vector(7 DOWNTO 0);
+	InstructionOut : OUT std_logic_vector(31 DOWNTO 0);
+	BranchOut : OUT std_logic;
+	ZeroOut : OUT std_logic;
+	MemWriteOut : OUT std_logic;
+	RegWriteOut : OUT std_logic
 	);
-END dataMem;
+END singleCycleProcessor;
 
 -- Design Ports Information
--- q[0]	=>  Location: PIN_C4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[1]	=>  Location: PIN_A3,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[2]	=>  Location: PIN_D5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[3]	=>  Location: PIN_F7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[4]	=>  Location: PIN_B4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[5]	=>  Location: PIN_C5,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[6]	=>  Location: PIN_F8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- q[7]	=>  Location: PIN_G8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- wren	=>  Location: PIN_B3,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- clock	=>  Location: PIN_J1,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[0]	=>  Location: PIN_A4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[0]	=>  Location: PIN_H8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[1]	=>  Location: PIN_C8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[2]	=>  Location: PIN_B8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[3]	=>  Location: PIN_E7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[4]	=>  Location: PIN_D8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[5]	=>  Location: PIN_D7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[6]	=>  Location: PIN_C7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- address[7]	=>  Location: PIN_C6,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[1]	=>  Location: PIN_D4,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[2]	=>  Location: PIN_D6,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[3]	=>  Location: PIN_G7,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[4]	=>  Location: PIN_E10,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[5]	=>  Location: PIN_A8,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[6]	=>  Location: PIN_G9,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- data[7]	=>  Location: PIN_E8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- GClock	=>  Location: PIN_J6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- GReset	=>  Location: PIN_G22,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- ValueSelect[0]	=>  Location: PIN_AE25,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- ValueSelect[1]	=>  Location: PIN_B7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- ValueSelect[2]	=>  Location: PIN_J1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[0]	=>  Location: PIN_C2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[1]	=>  Location: PIN_V1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[2]	=>  Location: PIN_K8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[3]	=>  Location: PIN_A23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[4]	=>  Location: PIN_R26,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[5]	=>  Location: PIN_Y13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[6]	=>  Location: PIN_D1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MuxOut[7]	=>  Location: PIN_H5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[0]	=>  Location: PIN_L7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[1]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[2]	=>  Location: PIN_J17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[3]	=>  Location: PIN_L6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[4]	=>  Location: PIN_G5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[5]	=>  Location: PIN_J3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[6]	=>  Location: PIN_AD2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[7]	=>  Location: PIN_D11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[8]	=>  Location: PIN_B10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[9]	=>  Location: PIN_U24,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[10]	=>  Location: PIN_AE10,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[11]	=>  Location: PIN_G1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[12]	=>  Location: PIN_M8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[13]	=>  Location: PIN_AD19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[14]	=>  Location: PIN_K2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[15]	=>  Location: PIN_G11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[16]	=>  Location: PIN_H6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[17]	=>  Location: PIN_AE13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[18]	=>  Location: PIN_L2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[19]	=>  Location: PIN_G4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[20]	=>  Location: PIN_W4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[21]	=>  Location: PIN_L1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[22]	=>  Location: PIN_G3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[23]	=>  Location: PIN_AH23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[24]	=>  Location: PIN_M2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[25]	=>  Location: PIN_C23,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[26]	=>  Location: PIN_L4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[27]	=>  Location: PIN_E19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[28]	=>  Location: PIN_AG11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[29]	=>  Location: PIN_AH25,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[30]	=>  Location: PIN_AB20,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- InstructionOut[31]	=>  Location: PIN_D19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- BranchOut	=>  Location: PIN_AB18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- ZeroOut	=>  Location: PIN_P1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- MemWriteOut	=>  Location: PIN_AF4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- RegWriteOut	=>  Location: PIN_Y12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
-ARCHITECTURE structure OF dataMem IS
+ARCHITECTURE structure OF singleCycleProcessor IS
 SIGNAL gnd : std_logic := '0';
 SIGNAL vcc : std_logic := '1';
 SIGNAL unknown : std_logic := 'X';
@@ -80,432 +107,750 @@ SIGNAL devpor : std_logic := '1';
 SIGNAL ww_devoe : std_logic;
 SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
-SIGNAL ww_address : std_logic_vector(7 DOWNTO 0);
-SIGNAL ww_clock : std_logic;
-SIGNAL ww_data : std_logic_vector(7 DOWNTO 0);
-SIGNAL ww_wren : std_logic;
-SIGNAL ww_q : std_logic_vector(7 DOWNTO 0);
-SIGNAL \altsyncram_component|auto_generated|ram_block1a0_PORTADATAIN_bus\ : std_logic_vector(17 DOWNTO 0);
-SIGNAL \altsyncram_component|auto_generated|ram_block1a0_PORTAADDR_bus\ : std_logic_vector(7 DOWNTO 0);
-SIGNAL \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\ : std_logic_vector(17 DOWNTO 0);
-SIGNAL \clock~inputclkctrl_INCLK_bus\ : std_logic_vector(3 DOWNTO 0);
-SIGNAL \q[0]~output_o\ : std_logic;
-SIGNAL \q[1]~output_o\ : std_logic;
-SIGNAL \q[2]~output_o\ : std_logic;
-SIGNAL \q[3]~output_o\ : std_logic;
-SIGNAL \q[4]~output_o\ : std_logic;
-SIGNAL \q[5]~output_o\ : std_logic;
-SIGNAL \q[6]~output_o\ : std_logic;
-SIGNAL \q[7]~output_o\ : std_logic;
-SIGNAL \wren~input_o\ : std_logic;
-SIGNAL \clock~input_o\ : std_logic;
-SIGNAL \clock~inputclkctrl_outclk\ : std_logic;
-SIGNAL \data[0]~input_o\ : std_logic;
-SIGNAL \address[0]~input_o\ : std_logic;
-SIGNAL \address[1]~input_o\ : std_logic;
-SIGNAL \address[2]~input_o\ : std_logic;
-SIGNAL \address[3]~input_o\ : std_logic;
-SIGNAL \address[4]~input_o\ : std_logic;
-SIGNAL \address[5]~input_o\ : std_logic;
-SIGNAL \address[6]~input_o\ : std_logic;
-SIGNAL \address[7]~input_o\ : std_logic;
-SIGNAL \data[1]~input_o\ : std_logic;
-SIGNAL \data[2]~input_o\ : std_logic;
-SIGNAL \data[3]~input_o\ : std_logic;
-SIGNAL \data[4]~input_o\ : std_logic;
-SIGNAL \data[5]~input_o\ : std_logic;
-SIGNAL \data[6]~input_o\ : std_logic;
-SIGNAL \data[7]~input_o\ : std_logic;
-SIGNAL \altsyncram_component|auto_generated|q_a\ : std_logic_vector(7 DOWNTO 0);
+SIGNAL ww_GClock : std_logic;
+SIGNAL ww_GReset : std_logic;
+SIGNAL ww_ValueSelect : std_logic_vector(2 DOWNTO 0);
+SIGNAL ww_MuxOut : std_logic_vector(7 DOWNTO 0);
+SIGNAL ww_InstructionOut : std_logic_vector(31 DOWNTO 0);
+SIGNAL ww_BranchOut : std_logic;
+SIGNAL ww_ZeroOut : std_logic;
+SIGNAL ww_MemWriteOut : std_logic;
+SIGNAL ww_RegWriteOut : std_logic;
+SIGNAL \GClock~input_o\ : std_logic;
+SIGNAL \GReset~input_o\ : std_logic;
+SIGNAL \ValueSelect[0]~input_o\ : std_logic;
+SIGNAL \ValueSelect[1]~input_o\ : std_logic;
+SIGNAL \ValueSelect[2]~input_o\ : std_logic;
+SIGNAL \MuxOut[0]~output_o\ : std_logic;
+SIGNAL \MuxOut[1]~output_o\ : std_logic;
+SIGNAL \MuxOut[2]~output_o\ : std_logic;
+SIGNAL \MuxOut[3]~output_o\ : std_logic;
+SIGNAL \MuxOut[4]~output_o\ : std_logic;
+SIGNAL \MuxOut[5]~output_o\ : std_logic;
+SIGNAL \MuxOut[6]~output_o\ : std_logic;
+SIGNAL \MuxOut[7]~output_o\ : std_logic;
+SIGNAL \InstructionOut[0]~output_o\ : std_logic;
+SIGNAL \InstructionOut[1]~output_o\ : std_logic;
+SIGNAL \InstructionOut[2]~output_o\ : std_logic;
+SIGNAL \InstructionOut[3]~output_o\ : std_logic;
+SIGNAL \InstructionOut[4]~output_o\ : std_logic;
+SIGNAL \InstructionOut[5]~output_o\ : std_logic;
+SIGNAL \InstructionOut[6]~output_o\ : std_logic;
+SIGNAL \InstructionOut[7]~output_o\ : std_logic;
+SIGNAL \InstructionOut[8]~output_o\ : std_logic;
+SIGNAL \InstructionOut[9]~output_o\ : std_logic;
+SIGNAL \InstructionOut[10]~output_o\ : std_logic;
+SIGNAL \InstructionOut[11]~output_o\ : std_logic;
+SIGNAL \InstructionOut[12]~output_o\ : std_logic;
+SIGNAL \InstructionOut[13]~output_o\ : std_logic;
+SIGNAL \InstructionOut[14]~output_o\ : std_logic;
+SIGNAL \InstructionOut[15]~output_o\ : std_logic;
+SIGNAL \InstructionOut[16]~output_o\ : std_logic;
+SIGNAL \InstructionOut[17]~output_o\ : std_logic;
+SIGNAL \InstructionOut[18]~output_o\ : std_logic;
+SIGNAL \InstructionOut[19]~output_o\ : std_logic;
+SIGNAL \InstructionOut[20]~output_o\ : std_logic;
+SIGNAL \InstructionOut[21]~output_o\ : std_logic;
+SIGNAL \InstructionOut[22]~output_o\ : std_logic;
+SIGNAL \InstructionOut[23]~output_o\ : std_logic;
+SIGNAL \InstructionOut[24]~output_o\ : std_logic;
+SIGNAL \InstructionOut[25]~output_o\ : std_logic;
+SIGNAL \InstructionOut[26]~output_o\ : std_logic;
+SIGNAL \InstructionOut[27]~output_o\ : std_logic;
+SIGNAL \InstructionOut[28]~output_o\ : std_logic;
+SIGNAL \InstructionOut[29]~output_o\ : std_logic;
+SIGNAL \InstructionOut[30]~output_o\ : std_logic;
+SIGNAL \InstructionOut[31]~output_o\ : std_logic;
+SIGNAL \BranchOut~output_o\ : std_logic;
+SIGNAL \ZeroOut~output_o\ : std_logic;
+SIGNAL \MemWriteOut~output_o\ : std_logic;
+SIGNAL \RegWriteOut~output_o\ : std_logic;
 
 BEGIN
 
-ww_address <= address;
-ww_clock <= clock;
-ww_data <= data;
-ww_wren <= wren;
-q <= ww_q;
+ww_GClock <= GClock;
+ww_GReset <= GReset;
+ww_ValueSelect <= ValueSelect;
+MuxOut <= ww_MuxOut;
+InstructionOut <= ww_InstructionOut;
+BranchOut <= ww_BranchOut;
+ZeroOut <= ww_ZeroOut;
+MemWriteOut <= ww_MemWriteOut;
+RegWriteOut <= ww_RegWriteOut;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
 
-\altsyncram_component|auto_generated|ram_block1a0_PORTADATAIN_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & \data[7]~input_o\ & \data[6]~input_o\ & \data[5]~input_o\ & \data[4]~input_o\ & \data[3]~input_o\ & \data[2]~input_o\ & 
-\data[1]~input_o\ & \data[0]~input_o\);
-
-\altsyncram_component|auto_generated|ram_block1a0_PORTAADDR_bus\ <= (\address[7]~input_o\ & \address[6]~input_o\ & \address[5]~input_o\ & \address[4]~input_o\ & \address[3]~input_o\ & \address[2]~input_o\ & \address[1]~input_o\ & \address[0]~input_o\);
-
-\altsyncram_component|auto_generated|q_a\(0) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(0);
-\altsyncram_component|auto_generated|q_a\(1) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(1);
-\altsyncram_component|auto_generated|q_a\(2) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(2);
-\altsyncram_component|auto_generated|q_a\(3) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(3);
-\altsyncram_component|auto_generated|q_a\(4) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(4);
-\altsyncram_component|auto_generated|q_a\(5) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(5);
-\altsyncram_component|auto_generated|q_a\(6) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(6);
-\altsyncram_component|auto_generated|q_a\(7) <= \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\(7);
-
-\clock~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \clock~input_o\);
-
--- Location: IOOBUF_X3_Y73_N23
-\q[0]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y69_N9
+\MuxOut[0]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(0),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[0]~output_o\);
+	o => \MuxOut[0]~output_o\);
 
--- Location: IOOBUF_X5_Y73_N9
-\q[1]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y28_N23
+\MuxOut[1]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(1),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[1]~output_o\);
+	o => \MuxOut[1]~output_o\);
 
--- Location: IOOBUF_X3_Y73_N2
-\q[2]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y48_N2
+\MuxOut[2]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(2),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[2]~output_o\);
+	o => \MuxOut[2]~output_o\);
 
--- Location: IOOBUF_X9_Y73_N9
-\q[3]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X102_Y73_N2
+\MuxOut[3]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(3),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[3]~output_o\);
+	o => \MuxOut[3]~output_o\);
 
--- Location: IOOBUF_X7_Y73_N23
-\q[4]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X115_Y33_N9
+\MuxOut[4]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(4),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[4]~output_o\);
+	o => \MuxOut[4]~output_o\);
 
--- Location: IOOBUF_X3_Y73_N9
-\q[5]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X52_Y0_N9
+\MuxOut[5]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(5),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[5]~output_o\);
+	o => \MuxOut[5]~output_o\);
 
--- Location: IOOBUF_X11_Y73_N9
-\q[6]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y68_N9
+\MuxOut[6]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(6),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[6]~output_o\);
+	o => \MuxOut[6]~output_o\);
 
--- Location: IOOBUF_X11_Y73_N16
-\q[7]~output\ : cycloneive_io_obuf
+-- Location: IOOBUF_X0_Y59_N23
+\MuxOut[7]~output\ : cycloneive_io_obuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \altsyncram_component|auto_generated|q_a\(7),
+	i => GND,
 	devoe => ww_devoe,
-	o => \q[7]~output_o\);
+	o => \MuxOut[7]~output_o\);
 
--- Location: IOIBUF_X5_Y73_N1
-\wren~input\ : cycloneive_io_ibuf
+-- Location: IOOBUF_X0_Y47_N16
+\InstructionOut[0]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[0]~output_o\);
+
+-- Location: IOOBUF_X52_Y73_N16
+\InstructionOut[1]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[1]~output_o\);
+
+-- Location: IOOBUF_X69_Y73_N2
+\InstructionOut[2]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[2]~output_o\);
+
+-- Location: IOOBUF_X0_Y47_N23
+\InstructionOut[3]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[3]~output_o\);
+
+-- Location: IOOBUF_X0_Y67_N23
+\InstructionOut[4]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[4]~output_o\);
+
+-- Location: IOOBUF_X0_Y57_N23
+\InstructionOut[5]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[5]~output_o\);
+
+-- Location: IOOBUF_X0_Y22_N23
+\InstructionOut[6]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[6]~output_o\);
+
+-- Location: IOOBUF_X23_Y73_N9
+\InstructionOut[7]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[7]~output_o\);
+
+-- Location: IOOBUF_X38_Y73_N9
+\InstructionOut[8]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[8]~output_o\);
+
+-- Location: IOOBUF_X115_Y28_N9
+\InstructionOut[9]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[9]~output_o\);
+
+-- Location: IOOBUF_X29_Y0_N23
+\InstructionOut[10]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[10]~output_o\);
+
+-- Location: IOOBUF_X0_Y55_N16
+\InstructionOut[11]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[11]~output_o\);
+
+-- Location: IOOBUF_X0_Y45_N16
+\InstructionOut[12]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[12]~output_o\);
+
+-- Location: IOOBUF_X94_Y0_N2
+\InstructionOut[13]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[13]~output_o\);
+
+-- Location: IOOBUF_X0_Y55_N23
+\InstructionOut[14]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[14]~output_o\);
+
+-- Location: IOOBUF_X25_Y73_N16
+\InstructionOut[15]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[15]~output_o\);
+
+-- Location: IOOBUF_X0_Y64_N2
+\InstructionOut[16]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[16]~output_o\);
+
+-- Location: IOOBUF_X42_Y0_N23
+\InstructionOut[17]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[17]~output_o\);
+
+-- Location: IOOBUF_X0_Y44_N2
+\InstructionOut[18]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[18]~output_o\);
+
+-- Location: IOOBUF_X0_Y63_N16
+\InstructionOut[19]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[19]~output_o\);
+
+-- Location: IOOBUF_X0_Y14_N9
+\InstructionOut[20]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[20]~output_o\);
+
+-- Location: IOOBUF_X0_Y44_N9
+\InstructionOut[21]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[21]~output_o\);
+
+-- Location: IOOBUF_X0_Y63_N23
+\InstructionOut[22]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[22]~output_o\);
+
+-- Location: IOOBUF_X81_Y0_N16
+\InstructionOut[23]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[23]~output_o\);
+
+-- Location: IOOBUF_X0_Y44_N16
+\InstructionOut[24]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[24]~output_o\);
+
+-- Location: IOOBUF_X100_Y73_N23
+\InstructionOut[25]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[25]~output_o\);
+
+-- Location: IOOBUF_X0_Y52_N2
+\InstructionOut[26]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[26]~output_o\);
+
+-- Location: IOOBUF_X94_Y73_N9
+\InstructionOut[27]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[27]~output_o\);
+
+-- Location: IOOBUF_X40_Y0_N23
+\InstructionOut[28]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[28]~output_o\);
+
+-- Location: IOOBUF_X91_Y0_N16
+\InstructionOut[29]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[29]~output_o\);
+
+-- Location: IOOBUF_X100_Y0_N2
+\InstructionOut[30]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[30]~output_o\);
+
+-- Location: IOOBUF_X83_Y73_N16
+\InstructionOut[31]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \InstructionOut[31]~output_o\);
+
+-- Location: IOOBUF_X98_Y0_N16
+\BranchOut~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \BranchOut~output_o\);
+
+-- Location: IOOBUF_X0_Y42_N2
+\ZeroOut~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \ZeroOut~output_o\);
+
+-- Location: IOOBUF_X1_Y0_N2
+\MemWriteOut~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \MemWriteOut~output_o\);
+
+-- Location: IOOBUF_X52_Y0_N23
+\RegWriteOut~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => GND,
+	devoe => ww_devoe,
+	o => \RegWriteOut~output_o\);
+
+-- Location: IOIBUF_X0_Y50_N15
+\GClock~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_wren,
-	o => \wren~input_o\);
+	i => ww_GClock,
+	o => \GClock~input_o\);
+
+-- Location: IOIBUF_X72_Y73_N22
+\GReset~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_GReset,
+	o => \GReset~input_o\);
+
+-- Location: IOIBUF_X89_Y0_N8
+\ValueSelect[0]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_ValueSelect(0),
+	o => \ValueSelect[0]~input_o\);
+
+-- Location: IOIBUF_X29_Y73_N8
+\ValueSelect[1]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_ValueSelect(1),
+	o => \ValueSelect[1]~input_o\);
 
 -- Location: IOIBUF_X0_Y36_N8
-\clock~input\ : cycloneive_io_ibuf
+\ValueSelect[2]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_clock,
-	o => \clock~input_o\);
+	i => ww_ValueSelect(2),
+	o => \ValueSelect[2]~input_o\);
 
--- Location: CLKCTRL_G2
-\clock~inputclkctrl\ : cycloneive_clkctrl
--- pragma translate_off
-GENERIC MAP (
-	clock_type => "global clock",
-	ena_register_mode => "none")
--- pragma translate_on
-PORT MAP (
-	inclk => \clock~inputclkctrl_INCLK_bus\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	outclk => \clock~inputclkctrl_outclk\);
+ww_MuxOut(0) <= \MuxOut[0]~output_o\;
 
--- Location: IOIBUF_X7_Y73_N15
-\data[0]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(0),
-	o => \data[0]~input_o\);
+ww_MuxOut(1) <= \MuxOut[1]~output_o\;
 
--- Location: IOIBUF_X11_Y73_N22
-\address[0]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(0),
-	o => \address[0]~input_o\);
+ww_MuxOut(2) <= \MuxOut[2]~output_o\;
 
--- Location: IOIBUF_X16_Y73_N8
-\address[1]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(1),
-	o => \address[1]~input_o\);
+ww_MuxOut(3) <= \MuxOut[3]~output_o\;
 
--- Location: IOIBUF_X16_Y73_N1
-\address[2]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(2),
-	o => \address[2]~input_o\);
+ww_MuxOut(4) <= \MuxOut[4]~output_o\;
 
--- Location: IOIBUF_X13_Y73_N8
-\address[3]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(3),
-	o => \address[3]~input_o\);
+ww_MuxOut(5) <= \MuxOut[5]~output_o\;
 
--- Location: IOIBUF_X16_Y73_N15
-\address[4]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(4),
-	o => \address[4]~input_o\);
+ww_MuxOut(6) <= \MuxOut[6]~output_o\;
 
--- Location: IOIBUF_X13_Y73_N1
-\address[5]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(5),
-	o => \address[5]~input_o\);
+ww_MuxOut(7) <= \MuxOut[7]~output_o\;
 
--- Location: IOIBUF_X16_Y73_N22
-\address[6]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(6),
-	o => \address[6]~input_o\);
+ww_InstructionOut(0) <= \InstructionOut[0]~output_o\;
 
--- Location: IOIBUF_X5_Y73_N22
-\address[7]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_address(7),
-	o => \address[7]~input_o\);
+ww_InstructionOut(1) <= \InstructionOut[1]~output_o\;
 
--- Location: IOIBUF_X1_Y73_N1
-\data[1]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(1),
-	o => \data[1]~input_o\);
+ww_InstructionOut(2) <= \InstructionOut[2]~output_o\;
 
--- Location: IOIBUF_X13_Y73_N15
-\data[2]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(2),
-	o => \data[2]~input_o\);
+ww_InstructionOut(3) <= \InstructionOut[3]~output_o\;
 
--- Location: IOIBUF_X9_Y73_N1
-\data[3]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(3),
-	o => \data[3]~input_o\);
+ww_InstructionOut(4) <= \InstructionOut[4]~output_o\;
 
--- Location: IOIBUF_X18_Y73_N15
-\data[4]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(4),
-	o => \data[4]~input_o\);
+ww_InstructionOut(5) <= \InstructionOut[5]~output_o\;
 
--- Location: IOIBUF_X18_Y73_N22
-\data[5]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(5),
-	o => \data[5]~input_o\);
+ww_InstructionOut(6) <= \InstructionOut[6]~output_o\;
 
--- Location: IOIBUF_X13_Y73_N22
-\data[6]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(6),
-	o => \data[6]~input_o\);
+ww_InstructionOut(7) <= \InstructionOut[7]~output_o\;
 
--- Location: IOIBUF_X11_Y73_N1
-\data[7]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_data(7),
-	o => \data[7]~input_o\);
+ww_InstructionOut(8) <= \InstructionOut[8]~output_o\;
 
--- Location: M9K_X15_Y72_N0
-\altsyncram_component|auto_generated|ram_block1a0\ : cycloneive_ram_block
--- pragma translate_off
-GENERIC MAP (
-	mem_init2 => X"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-	mem_init1 => X"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-	mem_init0 => X"000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FA0000000000000000FF000000000000000003000000000000000020000000000000000001000000000000000000",
-	data_interleave_offset_in_bits => 1,
-	data_interleave_width_in_bits => 1,
-	init_file => "../MIFs/memTest.mif",
-	init_file_layout => "port_a",
-	logical_ram_name => "altsyncram:altsyncram_component|altsyncram_o7i1:auto_generated|ALTSYNCRAM",
-	operation_mode => "single_port",
-	port_a_address_clear => "none",
-	port_a_address_width => 8,
-	port_a_byte_enable_clock => "none",
-	port_a_data_out_clear => "none",
-	port_a_data_out_clock => "clock0",
-	port_a_data_width => 18,
-	port_a_first_address => 0,
-	port_a_first_bit_number => 0,
-	port_a_last_address => 255,
-	port_a_logical_ram_depth => 256,
-	port_a_logical_ram_width => 8,
-	port_a_read_during_write_mode => "new_data_with_nbe_read",
-	port_b_address_width => 8,
-	port_b_data_width => 18,
-	ram_block_type => "M9K")
--- pragma translate_on
-PORT MAP (
-	portawe => \wren~input_o\,
-	portare => VCC,
-	clk0 => \clock~inputclkctrl_outclk\,
-	portadatain => \altsyncram_component|auto_generated|ram_block1a0_PORTADATAIN_bus\,
-	portaaddr => \altsyncram_component|auto_generated|ram_block1a0_PORTAADDR_bus\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	portadataout => \altsyncram_component|auto_generated|ram_block1a0_PORTADATAOUT_bus\);
+ww_InstructionOut(9) <= \InstructionOut[9]~output_o\;
 
-ww_q(0) <= \q[0]~output_o\;
+ww_InstructionOut(10) <= \InstructionOut[10]~output_o\;
 
-ww_q(1) <= \q[1]~output_o\;
+ww_InstructionOut(11) <= \InstructionOut[11]~output_o\;
 
-ww_q(2) <= \q[2]~output_o\;
+ww_InstructionOut(12) <= \InstructionOut[12]~output_o\;
 
-ww_q(3) <= \q[3]~output_o\;
+ww_InstructionOut(13) <= \InstructionOut[13]~output_o\;
 
-ww_q(4) <= \q[4]~output_o\;
+ww_InstructionOut(14) <= \InstructionOut[14]~output_o\;
 
-ww_q(5) <= \q[5]~output_o\;
+ww_InstructionOut(15) <= \InstructionOut[15]~output_o\;
 
-ww_q(6) <= \q[6]~output_o\;
+ww_InstructionOut(16) <= \InstructionOut[16]~output_o\;
 
-ww_q(7) <= \q[7]~output_o\;
+ww_InstructionOut(17) <= \InstructionOut[17]~output_o\;
+
+ww_InstructionOut(18) <= \InstructionOut[18]~output_o\;
+
+ww_InstructionOut(19) <= \InstructionOut[19]~output_o\;
+
+ww_InstructionOut(20) <= \InstructionOut[20]~output_o\;
+
+ww_InstructionOut(21) <= \InstructionOut[21]~output_o\;
+
+ww_InstructionOut(22) <= \InstructionOut[22]~output_o\;
+
+ww_InstructionOut(23) <= \InstructionOut[23]~output_o\;
+
+ww_InstructionOut(24) <= \InstructionOut[24]~output_o\;
+
+ww_InstructionOut(25) <= \InstructionOut[25]~output_o\;
+
+ww_InstructionOut(26) <= \InstructionOut[26]~output_o\;
+
+ww_InstructionOut(27) <= \InstructionOut[27]~output_o\;
+
+ww_InstructionOut(28) <= \InstructionOut[28]~output_o\;
+
+ww_InstructionOut(29) <= \InstructionOut[29]~output_o\;
+
+ww_InstructionOut(30) <= \InstructionOut[30]~output_o\;
+
+ww_InstructionOut(31) <= \InstructionOut[31]~output_o\;
+
+ww_BranchOut <= \BranchOut~output_o\;
+
+ww_ZeroOut <= \ZeroOut~output_o\;
+
+ww_MemWriteOut <= \MemWriteOut~output_o\;
+
+ww_RegWriteOut <= \RegWriteOut~output_o\;
 END structure;
 
 

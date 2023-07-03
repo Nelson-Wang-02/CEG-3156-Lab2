@@ -15,9 +15,11 @@
 
 FUNCTION dataMem 
 (
-	address[7..0],
 	clock,
 	data[7..0],
+	rdaddress[7..0],
+	rden,
+	wraddress[7..0],
 	wren
 )
 

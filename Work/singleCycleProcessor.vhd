@@ -45,10 +45,12 @@ architecture rtl of singleCycleProcessor is
 	component dataMem 
 		PORT
 		(
-			address		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
 			clock		: IN STD_LOGIC  := '1';
 			data		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
-			wren		: IN STD_LOGIC ;
+			rdaddress		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+			rden		: IN STD_LOGIC  := '1';
+			wraddress		: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+			wren		: IN STD_LOGIC  := '0';
 			q		: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
 		);
 	END component;
@@ -133,7 +135,7 @@ architecture rtl of singleCycleProcessor is
 	
 	signal sig_PCOut : STD_LOGIC_VECTOR(7 downto 0);
 	
-	signal sig_JumpMuxOut : STD_LOGIC_VECTOR(7 downto 0); --to be mapped
+	signal sig_jumpMuxOut : STD_LOGIC_VECTOR(7 downto 0); 
 	
 	signal sig_instrMemAddress : STD_LOGIC_VECTOR(31 downto 0);
 	
@@ -145,8 +147,6 @@ architecture rtl of singleCycleProcessor is
 	
 	signal sig_fileRegMuxOut : STD_LOGIC_VECTOR(2 downto 0);
 	
-	signal sig_dataMemMuxOut : STD_LOGIC_VECTOR(7 downto 0);
-	
 	--fileRegister outputs
 	signal sig_readData1, sig_readData2 : STD_LOGIC_VECTOR(7 downto 0);
 	
@@ -154,21 +154,38 @@ architecture rtl of singleCycleProcessor is
 	signal sig_RegDst, sig_ALUSrc, sig_MemtoReg, sig_MemRead, sig_MemWrite, sig_Branch, sig_BNE, sig_Jump, sig_RegWrite : STD_LOGIC;
 	signal sig_ALUOp : STD_LOGIC_VECTOR(1 downto 0);
 	
-	--ALU MUX
+	--ALU
 	signal sig_aluMuxOut : STD_LOGIC_VECTOR(7 downto 0);
+	signal sig_ALUOpOut : STD_LOGIC_VECTOR(2 downto 0);
+	signal sig_ALUResult : STD_LOGIC_VECTOR(7 downto 0);
+	signal sig_ALUZero   : STD_LOGIC;
 	
-	begin
+	--branch shift output
+	signal sig_branchShiftOut : STD_LOGIC_VECTOR(7 downto 0);
+	signal sig_shiftALUOut : STD_LOGIC_VECTOR(7 downto 0);
+	signal sig_shiftALUZero : STD_LOGIC;
+	signal sig_shiftALUCarryOut : STD_LOGIC;
+	
+	--branch
+	signal sig_branchSel: STD_LOGIC;
+	signal sig_branchMuxOut : STD_LOGIC_VECTOR(7 downto 0);	
+	
+	--Data memory
+	signal sig_ReadData : STD_LOGIC_VECTOR(7 downto 0);
+	signal sig_dataMuxOut : STD_LOGIC_VECTOR(7 downto 0);
+	
+	begin 
 	
 	--signal assignment
 	sig_JumpAddress <= pc4_diff(7 downto 4) & sig_shiftLeft2JOut;
-
+	sig_branchSel <= (sig_Branch and sig_ALUZero) or (sig_BNE and not(sig_ALUZero)); 
 
 	pcRegister: eightBitRegister
 		port map(
 			i_resetBar => GReset, 
 			i_load => '1',
 			i_clock => GClock,		
-			i_Value => sig_JumpMuxOut,		
+			i_Value => sig_jumpMuxOut,		
 			o_Value =>	sig_PCOut);
 			
 	pcPlus4: eightBitAddSub
@@ -198,7 +215,7 @@ architecture rtl of singleCycleProcessor is
 			
 			RegDst => sig_RegDst, 
 			ALUSrc => sig_ALUSrc,
-			MemtoReg => sig_MemRead, 
+			MemtoReg => sig_MemtoReg, 
 			RegWrite => sig_RegWrite, 
 			MemRead => sig_MemRead, 
 			MemWrite => sig_MemWrite, 
@@ -226,28 +243,76 @@ architecture rtl of singleCycleProcessor is
 			i_readReg2 => sig_instrMemAddress(18 downto 16),
 			
 			i_writeRegAddr => sig_fileRegMuxOut,
-			i_writeData => sig_dataMemMuxOut, --output needs to be assigned for dataMem
+			i_writeData => sig_dataMuxOut,
 		
 			o_readData1 => sig_readData1, 
 			o_readData2 => sig_readData2);
-			
+	
+	aluCtrl: ALUControlUnit
+		port map(
+			ALUOp => sig_ALUOp, 
+			F     => sig_instrMemAddress(5 downto 0),
+			Op		=> sig_ALUOpOut);
+	
 	aluMux: eightBit2to1Mux
 		port map (
 			input0 => sig_readData2, 
 			input1 => sig_instrMemAddress(7 downto 0),
 			sel => sig_ALUSrc,
-			mux_out => 			
-		
-		);
+			mux_out => sig_aluMuxOut);
 			
 	arithmeticUnit: alu 
 		port map(
 			rData1 => sig_readData1, 
-			rData2 => ,
-			Op => , 
-			ALUResult => ,
-			Zero =>	);
+			rData2 => sig_aluMuxOut,
+			Op => sig_ALUOpOut, 
+			ALUResult => sig_ALUResult,
+			Zero =>	sig_ALUZero);
 
-
-
+	branchShift: shiftLeft2_eightBits
+		port map(
+			input_instr => sig_instrMemAddress(7 downto 0),
+			output => sig_BranchShiftOut);
+			
+	branchALU: eightBitAddSub 
+		port map(
+			i_Ai => pc4_diff, 
+			i_Bi => sig_BranchShiftOut,
+			i_Op => '0',
+			o_Zero => sig_shiftALUZero,
+			o_CarryOut => sig_shiftALUCarryOut,
+			o_Diff => sig_shiftALUOut
+		);
+		
+	branchMux: eightBit2to1Mux
+		port map(
+			input0 => pc4_diff, 
+			input1 => sig_shiftALUOut,
+			sel => sig_branchSel,
+			mux_out => sig_branchMuxOut);	
+			
+	jumpMux: eightBit2to1Mux
+		port map(
+			input0 => sig_branchMuxOut, 
+			input1 => sig_JumpAddress,
+			sel => sig_Jump,
+			mux_out => sig_jumpMuxOut);
+	
+	dataMemory: dataMem 
+		PORT MAP (
+			clock => GClock,
+			data	=> sig_readData2,
+			rdaddress => sig_ALUResult,
+			rden => sig_MemRead,
+			wraddress => sig_ALUResult,
+			wren	=> sig_MemWrite,
+			q		=> sig_ReadData);
+	
+	dataMemMux: eightBit2to1Mux
+		port map(
+			input0 => sig_ALUResult, 
+			input1 => sig_ReadData,
+			sel => sig_MemtoReg,
+			mux_out => sig_dataMuxOut);
+			
 end rtl; 
