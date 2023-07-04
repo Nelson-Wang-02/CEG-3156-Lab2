@@ -39,7 +39,7 @@ architecture rtl of controlLogicUnit is
 	--output drivers
 	RegDst <= rFormat;
 	ALUSrc <= o_ALUSrc;
-	MemtoReg <= sw; 
+	MemtoReg <= lw; 
 	RegWrite <= o_RegWrite;
 	MemRead <= lw; 
 	MemWrite <= sw; 

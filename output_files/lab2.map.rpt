@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2
-Sun Jul 02 23:02:54 2023
+Tue Jul 04 00:01:45 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,32 +13,33 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis IP Cores Summary
-  9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. Registers Removed During Synthesis
  11. General Register Statistics
- 12. Source assignments for instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated
- 13. Source assignments for dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated
- 14. Parameter Settings for User Entity Instance: instrMem:insMemory|altsyncram:altsyncram_component
- 15. Parameter Settings for User Entity Instance: dataMem:dataMemory|altsyncram:altsyncram_component
- 16. altsyncram Parameter Settings by Entity Instance
- 17. Port Connectivity Checks: "eightBitAddSub:branchALU"
- 18. Port Connectivity Checks: "alu:arithmeticUnit|eightBitComparator:comp|oneBitComparator:comp7"
- 19. Port Connectivity Checks: "alu:arithmeticUnit|eightBitComparator:comp"
- 20. Port Connectivity Checks: "alu:arithmeticUnit|eightBitAddSub:addSub"
- 21. Port Connectivity Checks: "instrMem:insMemory"
- 22. Port Connectivity Checks: "eightBitAddSub:pcPlus4"
- 23. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b0"
- 24. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b1"
- 25. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b2"
- 26. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b3"
- 27. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b4"
- 28. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b5"
- 29. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b6"
- 30. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b7"
- 31. Port Connectivity Checks: "eightBitRegister:pcRegister"
- 32. Elapsed Time Per Partition
- 33. Analysis & Synthesis Messages
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Source assignments for instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_pua1:auto_generated
+ 14. Source assignments for dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated
+ 15. Parameter Settings for User Entity Instance: instrMem:insMemory|altsyncram:altsyncram_component
+ 16. Parameter Settings for User Entity Instance: dataMem:dataMemory|altsyncram:altsyncram_component
+ 17. altsyncram Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "eightBit6to1Mux:outputMux"
+ 19. Port Connectivity Checks: "eightBitAddSub:branchALU"
+ 20. Port Connectivity Checks: "alu:arithmeticUnit|eightBitComparator:comp|oneBitComparator:comp7"
+ 21. Port Connectivity Checks: "alu:arithmeticUnit|eightBitComparator:comp"
+ 22. Port Connectivity Checks: "alu:arithmeticUnit|eightBitAddSub:addSub"
+ 23. Port Connectivity Checks: "eightBitAddSub:pcPlus4"
+ 24. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b0"
+ 25. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b1"
+ 26. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b2"
+ 27. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b3"
+ 28. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b4"
+ 29. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b5"
+ 30. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b6"
+ 31. Port Connectivity Checks: "eightBitRegister:pcRegister|enARdFF_2:b7"
+ 32. Port Connectivity Checks: "eightBitRegister:pcRegister"
+ 33. Elapsed Time Per Partition
+ 34. Analysis & Synthesis Messages
 
 
 
@@ -64,18 +65,18 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jul 02 23:02:54 2023           ;
+; Analysis & Synthesis Status        ; Successful - Tue Jul 04 00:01:45 2023           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; lab2                                            ;
 ; Top-level Entity Name              ; singleCycleProcessor                            ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 0                                               ;
-;     Total combinational functions  ; 0                                               ;
-;     Dedicated logic registers      ; 0                                               ;
-; Total registers                    ; 0                                               ;
+; Total logic elements               ; 309                                             ;
+;     Total combinational functions  ; 253                                             ;
+;     Dedicated logic registers      ; 71                                              ;
+; Total registers                    ; 71                                              ;
 ; Total pins                         ; 49                                              ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 0                                               ;
+; Total memory bits                  ; 10,240                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
 ; Total PLLs                         ; 0                                               ;
 +------------------------------------+-------------------------------------------------+
@@ -174,198 +175,289 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 8      ;
+; Number detected on machine ; 6      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                          ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                            ; Library ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
-; Work/dataMem.vhd                 ; yes             ; User Wizard-Generated File             ; C:/1-School/CEG-3156-Lab2/Work/dataMem.vhd                              ;         ;
-; Work/singleCycleProcessor.vhd    ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/singleCycleProcessor.vhd                 ;         ;
-; Work/instrMem.vhd                ; yes             ; User Wizard-Generated File             ; C:/1-School/CEG-3156-Lab2/Work/instrMem.vhd                             ;         ;
-; Work/three_to_eight_decoder.vhd  ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/three_to_eight_decoder.vhd               ;         ;
-; Work/registerFile.vhd            ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/registerFile.vhd                         ;         ;
-; Work/oneBit8to1Mux.vhd           ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/oneBit8to1Mux.vhd                        ;         ;
-; Work/oneBit5to1Mux.vhd           ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/oneBit5to1Mux.vhd                        ;         ;
-; Work/eightBitRegister.vhd        ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/eightBitRegister.vhd                     ;         ;
-; Work/eightBitComparator.vhd      ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/eightBitComparator.vhd                   ;         ;
-; Work/eightBitAddSub.vhd          ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/eightBitAddSub.vhd                       ;         ;
-; Work/eightBit8to1Mux.vhd         ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/eightBit8to1Mux.vhd                      ;         ;
-; Work/eightBit5to1Mux.vhd         ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/eightBit5to1Mux.vhd                      ;         ;
-; Work/ALUControlUnit.vhd          ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/ALUControlUnit.vhd                       ;         ;
-; Work/alu.vhd                     ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/alu.vhd                                  ;         ;
-; Imports/onebitcomparator.vhd     ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Imports/onebitcomparator.vhd                  ;         ;
-; Imports/onebitadder.vhd          ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Imports/onebitadder.vhd                       ;         ;
-; Imports/enardFF_2.vhd            ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Imports/enardFF_2.vhd                         ;         ;
-; Work/controlLogicUnit.vhd        ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/controlLogicUnit.vhd                     ;         ;
-; Work/oneBit2to1Mux.vhd           ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/oneBit2to1Mux.vhd                        ;         ;
-; Work/eightBit2to1Mux.vhd         ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/eightBit2to1Mux.vhd                      ;         ;
-; Work/shiftLeft2.vhd              ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/shiftLeft2.vhd                           ;         ;
-; Work/threeBit2to1Mux.vhd         ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/threeBit2to1Mux.vhd                      ;         ;
-; Work/shiftLeft2_eightBits.vhd    ; yes             ; User VHDL File                         ; C:/1-School/CEG-3156-Lab2/Work/shiftLeft2_eightBits.vhd                 ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal130.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc        ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_l0a1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/1-School/CEG-3156-Lab2/db/altsyncram_l0a1.tdf                        ;         ;
-; mifs/memtest.mif                 ; yes             ; Auto-Found Memory Initialization File  ; C:/1-School/CEG-3156-Lab2/mifs/memtest.mif                              ;         ;
-; db/altsyncram_gnt1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/1-School/CEG-3156-Lab2/db/altsyncram_gnt1.tdf                        ;         ;
-; mifs/instrmemtest.mif            ; yes             ; Auto-Found Memory Initialization File  ; C:/1-School/CEG-3156-Lab2/mifs/instrmemtest.mif                         ;         ;
-+----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                               ;
++----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
+; Work/dataMem.vhd                 ; yes             ; User Wizard-Generated File             ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/dataMem.vhd                ;         ;
+; Work/singleCycleProcessor.vhd    ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/singleCycleProcessor.vhd   ;         ;
+; Work/instrMem.vhd                ; yes             ; User Wizard-Generated File             ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/instrMem.vhd               ;         ;
+; Work/three_to_eight_decoder.vhd  ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/three_to_eight_decoder.vhd ;         ;
+; Work/registerFile.vhd            ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/registerFile.vhd           ;         ;
+; Work/oneBit8to1Mux.vhd           ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/oneBit8to1Mux.vhd          ;         ;
+; Work/oneBit5to1Mux.vhd           ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/oneBit5to1Mux.vhd          ;         ;
+; Work/eightBitRegister.vhd        ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBitRegister.vhd       ;         ;
+; Work/eightBitComparator.vhd      ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBitComparator.vhd     ;         ;
+; Work/eightBitAddSub.vhd          ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBitAddSub.vhd         ;         ;
+; Work/eightBit8to1Mux.vhd         ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBit8to1Mux.vhd        ;         ;
+; Work/eightBit5to1Mux.vhd         ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBit5to1Mux.vhd        ;         ;
+; Work/ALUControlUnit.vhd          ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/ALUControlUnit.vhd         ;         ;
+; Work/alu.vhd                     ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/alu.vhd                    ;         ;
+; Imports/onebitcomparator.vhd     ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Imports/onebitcomparator.vhd    ;         ;
+; Imports/onebitadder.vhd          ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Imports/onebitadder.vhd         ;         ;
+; Imports/enardFF_2.vhd            ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Imports/enardFF_2.vhd           ;         ;
+; Work/controlLogicUnit.vhd        ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/controlLogicUnit.vhd       ;         ;
+; Work/oneBit2to1Mux.vhd           ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/oneBit2to1Mux.vhd          ;         ;
+; Work/eightBit2to1Mux.vhd         ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBit2to1Mux.vhd        ;         ;
+; Work/shiftLeft2.vhd              ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/shiftLeft2.vhd             ;         ;
+; Work/threeBit2to1Mux.vhd         ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/threeBit2to1Mux.vhd        ;         ;
+; Work/shiftLeft2_eightBits.vhd    ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/shiftLeft2_eightBits.vhd   ;         ;
+; Work/eightBit6to1Mux.vhd         ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/eightBit6to1Mux.vhd        ;         ;
+; Work/oneBit6to1Mux.vhd           ; yes             ; User VHDL File                         ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/oneBit6to1Mux.vhd          ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf             ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc      ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc             ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc             ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc              ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                 ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                 ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc               ;         ;
+; db/altsyncram_pua1.tdf           ; yes             ; Auto-Generated Megafunction            ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/db/altsyncram_pua1.tdf          ;         ;
+; ../MIFs/verificationTest.mif     ; yes             ; Auto-Found Memory Initialization File  ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/MIFs/verificationTest.mif       ;         ;
+; db/altsyncram_gnt1.tdf           ; yes             ; Auto-Generated Megafunction            ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/db/altsyncram_gnt1.tdf          ;         ;
+; mifs/instrmemtest.mif            ; yes             ; Auto-Found Memory Initialization File  ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/mifs/instrmemtest.mif           ;         ;
++----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary          ;
-+---------------------------------------------+--------+
-; Resource                                    ; Usage  ;
-+---------------------------------------------+--------+
-;                                             ;        ;
-; Total combinational functions               ; 0      ;
-; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 0      ;
-;     -- 3 input functions                    ; 0      ;
-;     -- <=2 input functions                  ; 0      ;
-;                                             ;        ;
-; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 0      ;
-;     -- arithmetic mode                      ; 0      ;
-;                                             ;        ;
-; Total registers                             ; 0      ;
-;     -- Dedicated logic registers            ; 0      ;
-;     -- I/O registers                        ; 0      ;
-;                                             ;        ;
-; I/O pins                                    ; 49     ;
-; Embedded Multiplier 9-bit elements          ; 0      ;
-; Maximum fan-out node                        ; GClock ;
-; Maximum fan-out                             ; 1      ;
-; Total fan-out                               ; 49     ;
-; Average fan-out                             ; 0.50   ;
-+---------------------------------------------+--------+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 309          ;
+;                                             ;              ;
+; Total combinational functions               ; 253          ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 195          ;
+;     -- 3 input functions                    ; 46           ;
+;     -- <=2 input functions                  ; 12           ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 253          ;
+;     -- arithmetic mode                      ; 0            ;
+;                                             ;              ;
+; Total registers                             ; 71           ;
+;     -- Dedicated logic registers            ; 71           ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 49           ;
+; Total memory bits                           ; 10240        ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+; Maximum fan-out node                        ; GClock~input ;
+; Maximum fan-out                             ; 111          ;
+; Total fan-out                               ; 1669         ;
+; Average fan-out                             ; 3.61         ;
++---------------------------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                           ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name   ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
-; |singleCycleProcessor      ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 49   ; 0            ; |singleCycleProcessor ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                            ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                     ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
+; |singleCycleProcessor                     ; 253 (2)           ; 71 (0)       ; 10240       ; 0            ; 0       ; 0         ; 49   ; 0            ; |singleCycleProcessor                                                                                   ; work         ;
+;    |ALUControlUnit:aluCtrl|               ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|ALUControlUnit:aluCtrl                                                            ; work         ;
+;    |alu:arithmeticUnit|                   ; 49 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit                                                                ; work         ;
+;       |eightBit5to1Mux:mux|               ; 22 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux                                            ; work         ;
+;          |oneBit5to1Mux:mux0|             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux0                         ; work         ;
+;          |oneBit5to1Mux:mux1|             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux1                         ; work         ;
+;          |oneBit5to1Mux:mux2|             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux2                         ; work         ;
+;          |oneBit5to1Mux:mux3|             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux3                         ; work         ;
+;          |oneBit5to1Mux:mux4|             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux4                         ; work         ;
+;          |oneBit5to1Mux:mux5|             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux5                         ; work         ;
+;          |oneBit5to1Mux:mux6|             ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux6                         ; work         ;
+;          |oneBit5to1Mux:mux7|             ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBit5to1Mux:mux|oneBit5to1Mux:mux7                         ; work         ;
+;       |eightBitAddSub:addSub|             ; 27 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub                                          ; work         ;
+;          |oneBitAdder:add0|               ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add0                         ; work         ;
+;          |oneBitAdder:add1|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add1                         ; work         ;
+;          |oneBitAdder:add2|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add2                         ; work         ;
+;          |oneBitAdder:add3|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add3                         ; work         ;
+;          |oneBitAdder:add4|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add4                         ; work         ;
+;          |oneBitAdder:add5|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add5                         ; work         ;
+;          |oneBitAdder:add6|               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|alu:arithmeticUnit|eightBitAddSub:addSub|oneBitAdder:add6                         ; work         ;
+;    |controlLogicUnit:control|             ; 11 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|controlLogicUnit:control                                                          ; work         ;
+;    |dataMem:dataMemory|                   ; 1 (0)             ; 1 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|dataMem:dataMemory                                                                ; work         ;
+;       |altsyncram:altsyncram_component|   ; 1 (0)             ; 1 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|dataMem:dataMemory|altsyncram:altsyncram_component                                ; work         ;
+;          |altsyncram_gnt1:auto_generated| ; 1 (1)             ; 1 (1)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated ; work         ;
+;    |eightBit2to1Mux:aluMux|               ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:aluMux                                                            ; work         ;
+;       |oneBit2to1Mux:mux0|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:aluMux|oneBit2to1Mux:mux0                                         ; work         ;
+;       |oneBit2to1Mux:mux7|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:aluMux|oneBit2to1Mux:mux7                                         ; work         ;
+;    |eightBit2to1Mux:dataMemMux|           ; 8 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux                                                        ; work         ;
+;       |oneBit2to1Mux:mux0|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux0                                     ; work         ;
+;       |oneBit2to1Mux:mux1|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux1                                     ; work         ;
+;       |oneBit2to1Mux:mux2|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux2                                     ; work         ;
+;       |oneBit2to1Mux:mux3|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux3                                     ; work         ;
+;       |oneBit2to1Mux:mux4|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux4                                     ; work         ;
+;       |oneBit2to1Mux:mux5|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux5                                     ; work         ;
+;       |oneBit2to1Mux:mux6|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux6                                     ; work         ;
+;       |oneBit2to1Mux:mux7|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:dataMemMux|oneBit2to1Mux:mux7                                     ; work         ;
+;    |eightBit2to1Mux:jumpMux|              ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux                                                           ; work         ;
+;       |oneBit2to1Mux:mux2|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux|oneBit2to1Mux:mux2                                        ; work         ;
+;       |oneBit2to1Mux:mux3|                ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux|oneBit2to1Mux:mux3                                        ; work         ;
+;       |oneBit2to1Mux:mux4|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux|oneBit2to1Mux:mux4                                        ; work         ;
+;       |oneBit2to1Mux:mux5|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux|oneBit2to1Mux:mux5                                        ; work         ;
+;       |oneBit2to1Mux:mux6|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux|oneBit2to1Mux:mux6                                        ; work         ;
+;       |oneBit2to1Mux:mux7|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit2to1Mux:jumpMux|oneBit2to1Mux:mux7                                        ; work         ;
+;    |eightBit6to1Mux:outputMux|            ; 36 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux                                                         ; work         ;
+;       |oneBit6to1Mux:mux0|                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux0                                      ; work         ;
+;       |oneBit6to1Mux:mux1|                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux1                                      ; work         ;
+;       |oneBit6to1Mux:mux2|                ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux2                                      ; work         ;
+;       |oneBit6to1Mux:mux3|                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux3                                      ; work         ;
+;       |oneBit6to1Mux:mux4|                ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux4                                      ; work         ;
+;       |oneBit6to1Mux:mux5|                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux5                                      ; work         ;
+;       |oneBit6to1Mux:mux6|                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux6                                      ; work         ;
+;       |oneBit6to1Mux:mux7|                ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBit6to1Mux:outputMux|oneBit6to1Mux:mux7                                      ; work         ;
+;    |eightBitAddSub:branchALU|             ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:branchALU                                                          ; work         ;
+;       |oneBitAdder:add3|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:branchALU|oneBitAdder:add3                                         ; work         ;
+;       |oneBitAdder:add4|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:branchALU|oneBitAdder:add4                                         ; work         ;
+;       |oneBitAdder:add5|                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:branchALU|oneBitAdder:add5                                         ; work         ;
+;       |oneBitAdder:add6|                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:branchALU|oneBitAdder:add6                                         ; work         ;
+;    |eightBitAddSub:pcPlus4|               ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:pcPlus4                                                            ; work         ;
+;       |oneBitAdder:add4|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:pcPlus4|oneBitAdder:add4                                           ; work         ;
+;       |oneBitAdder:add5|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:pcPlus4|oneBitAdder:add5                                           ; work         ;
+;       |oneBitAdder:add6|                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:pcPlus4|oneBitAdder:add6                                           ; work         ;
+;       |oneBitAdder:add7|                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitAddSub:pcPlus4|oneBitAdder:add7                                           ; work         ;
+;    |eightBitRegister:pcRegister|          ; 0 (0)             ; 6 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister                                                       ; work         ;
+;       |enARdFF_2:b2|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b2                                          ; work         ;
+;       |enARdFF_2:b3|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b3                                          ; work         ;
+;       |enARdFF_2:b4|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b4                                          ; work         ;
+;       |enARdFF_2:b5|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b5                                          ; work         ;
+;       |enARdFF_2:b6|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b6                                          ; work         ;
+;       |enARdFF_2:b7|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b7                                          ; work         ;
+;    |instrMem:insMemory|                   ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|instrMem:insMemory                                                                ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|instrMem:insMemory|altsyncram:altsyncram_component                                ; work         ;
+;          |altsyncram_pua1:auto_generated| ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_pua1:auto_generated ; work         ;
+;    |registerFile:regFile|                 ; 121 (14)          ; 64 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile                                                              ; work         ;
+;       |eightBit8to1Mux:mux_readData1|     ; 54 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1                                ; work         ;
+;          |oneBit8to1Mux:mux0|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux0             ; work         ;
+;          |oneBit8to1Mux:mux1|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux1             ; work         ;
+;          |oneBit8to1Mux:mux2|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux2             ; work         ;
+;          |oneBit8to1Mux:mux3|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux3             ; work         ;
+;          |oneBit8to1Mux:mux4|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux4             ; work         ;
+;          |oneBit8to1Mux:mux5|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux5             ; work         ;
+;          |oneBit8to1Mux:mux6|             ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux6             ; work         ;
+;          |oneBit8to1Mux:mux7|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData1|oneBit8to1Mux:mux7             ; work         ;
+;       |eightBit8to1Mux:mux_readData2|     ; 53 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2                                ; work         ;
+;          |oneBit8to1Mux:mux0|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux0             ; work         ;
+;          |oneBit8to1Mux:mux1|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux1             ; work         ;
+;          |oneBit8to1Mux:mux2|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux2             ; work         ;
+;          |oneBit8to1Mux:mux3|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux3             ; work         ;
+;          |oneBit8to1Mux:mux4|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux4             ; work         ;
+;          |oneBit8to1Mux:mux5|             ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux5             ; work         ;
+;          |oneBit8to1Mux:mux6|             ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux6             ; work         ;
+;          |oneBit8to1Mux:mux7|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBit8to1Mux:mux_readData2|oneBit8to1Mux:mux7             ; work         ;
+;       |eightBitRegister:row0|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row0|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row1|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row1|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row2|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row2|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row3|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row3|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row4|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row4|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row5|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row5|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row6|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row6|enARdFF_2:b7                           ; work         ;
+;       |eightBitRegister:row7|             ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7                                        ; work         ;
+;          |enARdFF_2:b0|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b0                           ; work         ;
+;          |enARdFF_2:b1|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b1                           ; work         ;
+;          |enARdFF_2:b2|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b2                           ; work         ;
+;          |enARdFF_2:b3|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b3                           ; work         ;
+;          |enARdFF_2:b4|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b4                           ; work         ;
+;          |enARdFF_2:b5|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b5                           ; work         ;
+;          |enARdFF_2:b6|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b6                           ; work         ;
+;          |enARdFF_2:b7|                   ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |singleCycleProcessor|registerFile:regFile|eightBitRegister:row7|enARdFF_2:b7                           ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                  ;
-+--------+--------------+---------+--------------+--------------+------------------------------------------+---------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                          ; IP Include File                             ;
-+--------+--------------+---------+--------------+--------------+------------------------------------------+---------------------------------------------+
-; Altera ; RAM: 2-PORT  ; N/A     ; N/A          ; N/A          ; |singleCycleProcessor|dataMem:dataMemory ; C:/1-School/CEG-3156-Lab2/Work/dataMem.vhd  ;
-; Altera ; ROM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |singleCycleProcessor|instrMem:insMemory ; C:/1-School/CEG-3156-Lab2/Work/instrMem.vhd ;
-+--------+--------------+---------+--------------+--------------+------------------------------------------+---------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                         ;
++----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------------------------------+
+; Name                                                                                         ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                          ;
++----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------------------------------+
+; dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 8            ; 256          ; 8            ; 2048 ; ../MIFs/instrMemTest.mif     ;
+; instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_pua1:auto_generated|ALTSYNCRAM ; AUTO ; ROM              ; 256          ; 32           ; --           ; --           ; 8192 ; ../MIFs/verificationTest.mif ;
++----------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                  ;
-+------------------------------------------------------------------------------------------------+--------------------+
-; Register name                                                                                  ; Reason for Removal ;
-+------------------------------------------------------------------------------------------------+--------------------+
-; dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|rden_b_store ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row0|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row1|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row2|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row3|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row4|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row5|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row6|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b0|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b1|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b2|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b3|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b4|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b5|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b6|int_q                                  ; Lost fanout        ;
-; registerFile:regFile|eightBitRegister:row7|enARdFF_2:b7|int_q                                  ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b0|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b1|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b2|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b3|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b4|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b5|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b6|int_q                                                 ; Lost fanout        ;
-; eightBitRegister:pcRegister|enARdFF_2:b7|int_q                                                 ; Lost fanout        ;
-; Total Number of Removed Registers = 73                                                         ;                    ;
-+------------------------------------------------------------------------------------------------+--------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                     ;
++--------+--------------+---------+--------------+--------------+------------------------------------------+----------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                          ; IP Include File                                                ;
++--------+--------------+---------+--------------+--------------+------------------------------------------+----------------------------------------------------------------+
+; Altera ; RAM: 2-PORT  ; N/A     ; N/A          ; N/A          ; |singleCycleProcessor|dataMem:dataMemory ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/dataMem.vhd  ;
+; Altera ; ROM: 1-PORT  ; N/A     ; N/A          ; N/A          ; |singleCycleProcessor|instrMem:insMemory ; D:/1-Quartus_Projects/CEG-3156/CEG-3156-Lab2/Work/instrMem.vhd ;
++--------+--------------+---------+--------------+--------------+------------------------------------------+----------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                           ;
-+------------------------------------------------------------------------------------------------+--------------------+-------------------------------------------------+
-; Register name                                                                                  ; Reason for Removal ; Registers Removed due to This Register          ;
-+------------------------------------------------------------------------------------------------+--------------------+-------------------------------------------------+
-; dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|rden_b_store ; Lost Fanouts       ; eightBitRegister:pcRegister|enARdFF_2:b0|int_q, ;
-;                                                                                                ;                    ; eightBitRegister:pcRegister|enARdFF_2:b1|int_q, ;
-;                                                                                                ;                    ; eightBitRegister:pcRegister|enARdFF_2:b2|int_q, ;
-;                                                                                                ;                    ; eightBitRegister:pcRegister|enARdFF_2:b3|int_q, ;
-;                                                                                                ;                    ; eightBitRegister:pcRegister|enARdFF_2:b4|int_q, ;
-;                                                                                                ;                    ; eightBitRegister:pcRegister|enARdFF_2:b5|int_q  ;
-+------------------------------------------------------------------------------------------------+--------------------+-------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                          ;
++------------------------------------------------+------------------------------------------------------------+
+; Register name                                  ; Reason for Removal                                         ;
++------------------------------------------------+------------------------------------------------------------+
+; eightBitRegister:pcRegister|enARdFF_2:b1|int_q ; Merged with eightBitRegister:pcRegister|enARdFF_2:b0|int_q ;
+; eightBitRegister:pcRegister|enARdFF_2:b0|int_q ; Stuck at GND due to stuck port data_in                     ;
+; Total Number of Removed Registers = 2          ;                                                            ;
++------------------------------------------------+------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -373,18 +465,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 71    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 70    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 64    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b4|int_q ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |singleCycleProcessor|eightBitRegister:pcRegister|enARdFF_2:b2|int_q ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
+
+
 +----------------------------------------------------------------------------------------------------------+
-; Source assignments for instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated ;
+; Source assignments for instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_pua1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                         ;
 +---------------------------------+--------------------+------+--------------------------------------------+
@@ -403,62 +505,62 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 +-------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: instrMem:insMemory|altsyncram:altsyncram_component ;
-+------------------------------------+----------------------+-------------------------------------+
-; Parameter Name                     ; Value                ; Type                                ;
-+------------------------------------+----------------------+-------------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                             ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                          ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                        ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                        ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                      ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                             ;
-; OPERATION_MODE                     ; ROM                  ; Untyped                             ;
-; WIDTH_A                            ; 32                   ; Signed Integer                      ;
-; WIDTHAD_A                          ; 8                    ; Signed Integer                      ;
-; NUMWORDS_A                         ; 256                  ; Signed Integer                      ;
-; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                             ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                             ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                             ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                             ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                             ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                             ;
-; WIDTH_B                            ; 1                    ; Untyped                             ;
-; WIDTHAD_B                          ; 1                    ; Untyped                             ;
-; NUMWORDS_B                         ; 1                    ; Untyped                             ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                             ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                             ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                             ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                             ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                             ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                             ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                             ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                             ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                             ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                             ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                             ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                             ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                      ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                             ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                             ;
-; BYTE_SIZE                          ; 8                    ; Untyped                             ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                             ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                             ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                             ;
-; INIT_FILE                          ; ../MIFs/memTest.mif  ; Untyped                             ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                             ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                             ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                             ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                             ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                             ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                             ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                             ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                             ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                             ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                             ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                             ;
-; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                             ;
-; CBXI_PARAMETER                     ; altsyncram_l0a1      ; Untyped                             ;
-+------------------------------------+----------------------+-------------------------------------+
++------------------------------------+------------------------------+-----------------------------+
+; Parameter Name                     ; Value                        ; Type                        ;
++------------------------------------+------------------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                            ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                           ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                          ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                           ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                          ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                            ; Untyped                     ;
+; OPERATION_MODE                     ; ROM                          ; Untyped                     ;
+; WIDTH_A                            ; 32                           ; Signed Integer              ;
+; WIDTHAD_A                          ; 8                            ; Signed Integer              ;
+; NUMWORDS_A                         ; 256                          ; Signed Integer              ;
+; OUTDATA_REG_A                      ; CLOCK0                       ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                         ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                         ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                         ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                         ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                         ; Untyped                     ;
+; WIDTH_B                            ; 1                            ; Untyped                     ;
+; WIDTHAD_B                          ; 1                            ; Untyped                     ;
+; NUMWORDS_B                         ; 1                            ; Untyped                     ;
+; INDATA_REG_B                       ; CLOCK1                       ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                       ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1                       ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK1                       ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED                 ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1                       ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                         ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                         ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                         ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                         ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                         ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                         ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                            ; Signed Integer              ;
+; WIDTH_BYTEENA_B                    ; 1                            ; Untyped                     ;
+; RAM_BLOCK_TYPE                     ; AUTO                         ; Untyped                     ;
+; BYTE_SIZE                          ; 8                            ; Untyped                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                    ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ         ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ         ; Untyped                     ;
+; INIT_FILE                          ; ../MIFs/verificationTest.mif ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A                       ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                            ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS                       ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                       ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS                       ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                       ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN              ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN              ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                        ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                        ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                            ; Untyped                     ;
+; DEVICE_FAMILY                      ; Cyclone IV E                 ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_pua1              ; Untyped                     ;
++------------------------------------+------------------------------+-----------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -554,6 +656,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+----------------------------------------------------+
 
 
++-------------------------------------------------------+
+; Port Connectivity Checks: "eightBit6to1Mux:outputMux" ;
++-------------+-------+----------+----------------------+
+; Port        ; Type  ; Severity ; Details              ;
++-------------+-------+----------+----------------------+
+; data_in5[7] ; Input ; Info     ; Stuck at GND         ;
++-------------+-------+----------+----------------------+
+
+
 +----------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "eightBitAddSub:branchALU"                                                                 ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -592,18 +703,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 ; o_carryout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "instrMem:insMemory"                                                                      ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                             ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; q[25..24] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; q[20..19] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; q[15..14] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; q[10..8]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -706,7 +805,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -716,7 +815,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Jul 02 23:02:51 2023
+    Info: Processing started: Tue Jul 04 00:01:42 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2 -c lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file work/datamem.vhd
@@ -836,17 +935,17 @@ Info (12021): Found 2 design units, including 1 entities, in source file work/th
 Info (12021): Found 2 design units, including 1 entities, in source file work/shiftleft2_eightbits.vhd
     Info (12022): Found design unit 1: shiftLeft2_eightBits-struct
     Info (12023): Found entity 1: shiftLeft2_eightBits
+Info (12021): Found 2 design units, including 1 entities, in source file work/eightbit6to1mux.vhd
+    Info (12022): Found design unit 1: eightBit6to1Mux-rtl
+    Info (12023): Found entity 1: eightBit6to1Mux
+Info (12021): Found 2 design units, including 1 entities, in source file work/onebit6to1mux.vhd
+    Info (12022): Found design unit 1: oneBit6to1Mux-rtl
+    Info (12023): Found entity 1: oneBit6to1Mux
 Info (12127): Elaborating entity "singleCycleProcessor" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at singleCycleProcessor.vhd(10): used implicit default value for signal "MuxOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at singleCycleProcessor.vhd(11): used implicit default value for signal "InstructionOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at singleCycleProcessor.vhd(13): used implicit default value for signal "BranchOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at singleCycleProcessor.vhd(13): used implicit default value for signal "ZeroOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at singleCycleProcessor.vhd(13): used implicit default value for signal "MemWriteOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at singleCycleProcessor.vhd(13): used implicit default value for signal "RegWriteOut" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(142): object "pc4_zero" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(142): object "pc4_cOut" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(166): object "sig_shiftALUZero" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(167): object "sig_shiftALUCarryOut" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(157): object "pc4_zero" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(157): object "pc4_cOut" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(181): object "sig_shiftALUZero" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at singleCycleProcessor.vhd(182): object "sig_shiftALUCarryOut" assigned a value but never read
 Info (12128): Elaborating entity "eightBitRegister" for hierarchy "eightBitRegister:pcRegister"
 Warning (10036): Verilog HDL or VHDL warning at eightBitRegister.vhd(40): object "int_notValue" assigned a value but never read
 Info (12128): Elaborating entity "enARdFF_2" for hierarchy "eightBitRegister:pcRegister|enARdFF_2:b7"
@@ -859,7 +958,7 @@ Info (12133): Instantiated megafunction "instrMem:insMemory|altsyncram:altsyncra
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
-    Info (12134): Parameter "init_file" = "../MIFs/memTest.mif"
+    Info (12134): Parameter "init_file" = "../MIFs/verificationTest.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
@@ -870,9 +969,20 @@ Info (12133): Instantiated megafunction "instrMem:insMemory|altsyncram:altsyncra
     Info (12134): Parameter "widthad_a" = "8"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_l0a1.tdf
-    Info (12023): Found entity 1: altsyncram_l0a1
-Info (12128): Elaborating entity "altsyncram_l0a1" for hierarchy "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_pua1.tdf
+    Info (12023): Found entity 1: altsyncram_pua1
+Info (12128): Elaborating entity "altsyncram_pua1" for hierarchy "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_pua1:auto_generated"
+Warning (113031): 12 out of 256 addresses are reinitialized. The latest initialized data will replace the existing data. There are 12 warnings found, and 10 warnings are reported.
+    Warning (113030): Memory Initialization File address 0 is reinitialized
+    Warning (113030): Memory Initialization File address 4 is reinitialized
+    Warning (113030): Memory Initialization File address 8 is reinitialized
+    Warning (113030): Memory Initialization File address 12 is reinitialized
+    Warning (113030): Memory Initialization File address 16 is reinitialized
+    Warning (113030): Memory Initialization File address 20 is reinitialized
+    Warning (113030): Memory Initialization File address 24 is reinitialized
+    Warning (113030): Memory Initialization File address 28 is reinitialized
+    Warning (113030): Memory Initialization File address 32 is reinitialized
+    Warning (113030): Memory Initialization File address 36 is reinitialized
 Info (12128): Elaborating entity "shiftLeft2" for hierarchy "shiftLeft2:lShift2J"
 Info (12128): Elaborating entity "controlLogicUnit" for hierarchy "controlLogicUnit:control"
 Info (12128): Elaborating entity "threeBit2to1Mux" for hierarchy "threeBit2to1Mux:regFileMux"
@@ -920,110 +1030,19 @@ Info (12133): Instantiated megafunction "dataMem:dataMemory|altsyncram:altsyncra
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_gnt1.tdf
     Info (12023): Found entity 1: altsyncram_gnt1
 Info (12128): Elaborating entity "altsyncram_gnt1" for hierarchy "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated"
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[0]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[1]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[2]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[3]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[4]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[5]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[6]"
-        Warning (14320): Synthesized away node "dataMem:dataMemory|altsyncram:altsyncram_component|altsyncram_gnt1:auto_generated|q_b[7]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[0]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[1]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[2]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[3]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[4]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[5]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[6]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[7]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[11]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[12]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[13]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[16]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[17]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[18]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[21]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[22]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[23]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[26]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[27]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[28]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[29]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[30]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[31]"
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[8]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[9]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[10]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[14]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[15]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[19]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[20]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[24]"
-        Warning (14320): Synthesized away node "instrMem:insMemory|altsyncram:altsyncram_component|altsyncram_l0a1:auto_generated|q_a[25]"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "MuxOut[0]" is stuck at GND
-    Warning (13410): Pin "MuxOut[1]" is stuck at GND
-    Warning (13410): Pin "MuxOut[2]" is stuck at GND
-    Warning (13410): Pin "MuxOut[3]" is stuck at GND
-    Warning (13410): Pin "MuxOut[4]" is stuck at GND
-    Warning (13410): Pin "MuxOut[5]" is stuck at GND
-    Warning (13410): Pin "MuxOut[6]" is stuck at GND
-    Warning (13410): Pin "MuxOut[7]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[0]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[1]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[2]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[3]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[4]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[5]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[6]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[7]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[8]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[9]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[10]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[11]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[12]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[13]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[14]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[15]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[16]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[17]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[18]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[19]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[20]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[21]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[22]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[23]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[24]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[25]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[26]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[27]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[28]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[29]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[30]" is stuck at GND
-    Warning (13410): Pin "InstructionOut[31]" is stuck at GND
-    Warning (13410): Pin "BranchOut" is stuck at GND
-    Warning (13410): Pin "ZeroOut" is stuck at GND
-    Warning (13410): Pin "MemWriteOut" is stuck at GND
-    Warning (13410): Pin "RegWriteOut" is stuck at GND
-Info (17049): 73 registers lost all their fanouts during netlist optimizations.
+Info (12128): Elaborating entity "eightBit6to1Mux" for hierarchy "eightBit6to1Mux:outputMux"
+Info (12128): Elaborating entity "oneBit6to1Mux" for hierarchy "eightBit6to1Mux:outputMux|oneBit6to1Mux:mux7"
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 5 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "GClock"
-    Warning (15610): No output dependent on input pin "GReset"
-    Warning (15610): No output dependent on input pin "ValueSelect[0]"
-    Warning (15610): No output dependent on input pin "ValueSelect[1]"
-    Warning (15610): No output dependent on input pin "ValueSelect[2]"
-Info (21057): Implemented 49 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 407 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 44 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 110 warnings
-    Info: Peak virtual memory: 4646 megabytes
-    Info: Processing ended: Sun Jul 02 23:02:54 2023
+    Info (21061): Implemented 318 logic cells
+    Info (21064): Implemented 40 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 4659 megabytes
+    Info: Processing ended: Tue Jul 04 00:01:45 2023
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:01
 

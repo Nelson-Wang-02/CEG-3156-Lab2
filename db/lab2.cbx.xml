@@ -2,6 +2,6 @@
 <LOG_ROOT>
 	<PROJECT NAME="lab2">
 		<CBX_INST_ENTRY INSTANCE_NAME="|singleCycleProcessor|dataMem:dataMemory|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_gnt1.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|singleCycleProcessor|instrMem:insMemory|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_l0a1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|singleCycleProcessor|instrMem:insMemory|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_pua1.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

@@ -132,7 +132,22 @@ architecture rtl of singleCycleProcessor is
 			output : OUT STD_LOGIC_VECTOR(7 downto 0));
 			
 	end component;
-	
+
+	component eightBit6to1Mux 
+		port (
+			data_in0   : in  std_logic_vector(7 downto 0);
+			data_in1   : in  std_logic_vector(7 downto 0);
+			data_in2   : in  std_logic_vector(7 downto 0);
+			data_in3   : in  std_logic_vector(7 downto 0);
+			data_in4   : in  std_logic_vector(7 downto 0);
+			data_in5   : in  std_logic_vector(7 downto 0);
+			
+			select_in  : in  std_logic_vector(2 downto 0);
+			
+			mux_out    : out std_logic_vector(7 downto 0));
+			
+	END component;
+
 	signal sig_PCOut : STD_LOGIC_VECTOR(7 downto 0);
 	
 	signal sig_jumpMuxOut : STD_LOGIC_VECTOR(7 downto 0); 
@@ -174,12 +189,17 @@ architecture rtl of singleCycleProcessor is
 	signal sig_ReadData : STD_LOGIC_VECTOR(7 downto 0);
 	signal sig_dataMuxOut : STD_LOGIC_VECTOR(7 downto 0);
 	
+	--output 
+	signal sig_outputMuxOut : STD_LOGIC_VECTOR(7 downto 0);
+	signal sig_otherOutput : STD_LOGIC_VECTOR(7 downto 0);
+	
 	begin 
 	
 	--signal assignment
 	sig_JumpAddress <= pc4_diff(7 downto 4) & sig_shiftLeft2JOut;
 	sig_branchSel <= (sig_Branch and sig_ALUZero) or (sig_BNE and not(sig_ALUZero)); 
-
+	sig_otherOutput <= '0' & sig_RegDst & sig_Jump & sig_MemRead & sig_MemtoReg & sig_ALUOp & sig_ALUSrc;
+	
 	pcRegister: eightBitRegister
 		port map(
 			i_resetBar => GReset, 
@@ -314,5 +334,27 @@ architecture rtl of singleCycleProcessor is
 			input1 => sig_ReadData,
 			sel => sig_MemtoReg,
 			mux_out => sig_dataMuxOut);
+	
+	outputMux: eightBit6to1Mux 
+		port map(
+			data_in0   => sig_PCOut,
+			data_in1   => sig_ALUResult,
+			data_in2   => sig_readData1,
+			data_in3   => sig_readData2,
+			data_in4   => sig_dataMuxOut, 
+			data_in5   => sig_otherOutput,
 			
+			select_in  => ValueSelect,
+			
+			mux_out    => sig_outputMuxOut);
+	
+	--output driver
+	MuxOut <= sig_outputMuxOut;
+	instructionOut <= sig_instrMemAddress;
+	BranchOut <= sig_Branch;
+	ZeroOut <= sig_ALUZero;
+	MemWriteOut <= sig_MemWrite;
+	RegWriteOut <= sig_RegWrite;
+	
+	
 end rtl; 
